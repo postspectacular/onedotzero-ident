@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,218 +31,220 @@ import toxi.geom.Vec2D;
 
 public class LetterFlowEditor extends PApplet {
 
-	class Pole extends Vec2D {
-		ArrayList<Pole> poles;
-		int id;
-		TColor col;
+    class Pole extends Vec2D {
 
-		int[] flow = new int[] { -1, -1 };
+        ArrayList<Pole> poles;
+        int id;
+        TColor col;
 
-		Pole(ArrayList<Pole> poles, int id, int x, int y, TColor col) {
-			super(x, y);
-			this.poles = poles;
-			this.id = id;
-			this.col = col;
-		}
+        int[] flow = new int[] { -1, -1 };
 
-		void draw() {
-			TColor c = id == selectedID ? TColor.YELLOW : col;
-			stroke(c.toARGB());
-			beginShape(LINES);
-			if (flow[0] != -1 && (id == selectedID || flow[0] > id)) {
-				Pole a = poles.get(flow[0]);
-				vertex(x, y);
-				vertex(a.x, a.y);
-				if (id == selectedID) {
-					drawArrow(a);
-				}
-			}
-			if (flow[1] != -1 && (id == selectedID || flow[1] > id)) {
-				Pole b = poles.get(flow[1]);
-				vertex(x, y);
-				vertex(b.x, b.y);
-				if (id == selectedID) {
-					drawArrow(b);
-				}
-			}
-			endShape();
-			noStroke();
-			fill(c.toARGB());
-			ellipse(x, y, 5, 5);
-			text("" + id, x, y - scale); //$NON-NLS-1$
-		}
+        Pole(ArrayList<Pole> poles, int id, int x, int y, TColor col) {
+            super(x, y);
+            this.poles = poles;
+            this.id = id;
+            this.col = col;
+        }
 
-		private void drawArrow(Pole p) {
-			Vec2D dir = this.sub(p).normalize();
-			vertex(p.x, p.y);
-			Vec2D q = p.add(dir.copy().rotate(0.3f).scaleSelf(10));
-			vertex(q.x, q.y);
-			vertex(p.x, p.y);
-			q = p.add(dir.rotate(-0.3f).scaleSelf(10));
-			vertex(q.x, q.y);
-		}
-	}
+        void draw() {
+            TColor c = id == selectedID ? TColor.YELLOW : col;
+            stroke(c.toARGB());
+            beginShape(LINES);
+            if (flow[0] != -1 && (id == selectedID || flow[0] > id)) {
+                Pole a = poles.get(flow[0]);
+                vertex(x, y);
+                vertex(a.x, a.y);
+                if (id == selectedID) {
+                    drawArrow(a);
+                }
+            }
+            if (flow[1] != -1 && (id == selectedID || flow[1] > id)) {
+                Pole b = poles.get(flow[1]);
+                vertex(x, y);
+                vertex(b.x, b.y);
+                if (id == selectedID) {
+                    drawArrow(b);
+                }
+            }
+            endShape();
+            noStroke();
+            fill(c.toARGB());
+            ellipse(x, y, 5, 5);
+            text("" + id, x, y - scale);
+        }
 
-	private static final long serialVersionUID = -1l;
+        private void drawArrow(Pole p) {
+            Vec2D dir = this.sub(p).normalize();
+            vertex(p.x, p.y);
+            Vec2D q = p.add(dir.copy().rotate(0.3f).scaleSelf(10));
+            vertex(q.x, q.y);
+            vertex(p.x, p.y);
+            q = p.add(dir.rotate(-0.3f).scaleSelf(10));
+            vertex(q.x, q.y);
+        }
+    }
 
-	private static final int SELECTED_COL = 0xffffff00;
-	private static final int INLINE_COL = 0x00ffff;
-	private static final int OUTLINE_COL = 0xff00ff;
+    private static final long serialVersionUID = -1;
 
-	public static void main(String[] args) {
-		PApplet.main(new String[] { "onedotzero.tools.LetterFlowEditor" });
-	}
+    private static final int SELECTED_COL = 0xffffff00;
+    private static final int INLINE_COL = 0xff00ffff;
+    private static final int OUTLINE_COL = 0xffff00ff;
 
-	ArrayList<Pole> outline = new ArrayList<Pole>();
-	ArrayList<Pole> inline = new ArrayList<Pole>();
-	ArrayList<Pole> currPath = outline;
+    public static void main(String[] args) {
+        PApplet.main(new String[] { "onedotzero.tools.LetterFlowEditor" });
+    }
 
-	boolean isOutline = true;
-	int scale = 3;
-	int offset = 20;
+    ArrayList<Pole> outline = new ArrayList<Pole>();
+    ArrayList<Pole> inline = new ArrayList<Pole>();
+    ArrayList<Pole> currPath = outline;
 
-	int selectedID = 0;
+    boolean isOutline = true;
+    int scale = 3;
+    int offset = 20;
 
-	private void chooseLetter() {
-		FileDialog fd = new FileDialog(frame, "Choose a letter image");
-		fd.setDirectory("assets/alphabet/png/");
-		fd.setFilenameFilter(new FilenameFilter() {
-			@Override
-			public boolean accept(File dir, String name) {
-				return name.indexOf("png") != -1;
-			}
-		});
-		fd.setVisible(true);
-		String fileID = fd.getDirectory() + fd.getFile();
-		if (fileID != null) {
-			outline.clear();
-			inline.clear();
-			isOutline = true;
-			currPath = outline;
-			selectedID = 0;
-			PImage img = loadImage(fileID);
-			int countOut = 0;
-			int countIn = 0;
-			TColor colOut = TColor.newARGB(0xffff00ff);
-			TColor colIn = TColor.newARGB(0xff00ffff);
-			for (int y = 0, idx = 0; y < img.height; y++) {
-				for (int x = 0; x < img.width; x++) {
-					int c = img.pixels[idx++] & 0xffffff;
-					if (c == OUTLINE_COL) {
-						outline.add(new Pole(outline, countOut, x * scale, y
-								* scale, colOut));
-						countOut++;
-					} else if (c == INLINE_COL) {
-						inline.add(new Pole(inline, countIn, x * scale, y
-								* scale, colIn));
-						countIn++;
-					}
-				}
-			}
-		} else {
-			System.exit(1);
-		}
-	}
+    int selectedID = 0;
 
-	private void displayFlowInfo() {
-		int y = 0;
-		for (Pole p : currPath) {
-			fill(p.id == selectedID ? SELECTED_COL : p.col.toARGB());
-			text(p.id + ": " + p.flow[0] + "," + p.flow[1], 400, y);
-			y += 14;
-		}
-	}
+    private void chooseLetter() {
+        FileDialog fd = new FileDialog(frame, "Choose a letter image");
+        fd.setDirectory("assets/alphabet/png/");
+        fd.setFilenameFilter(new FilenameFilter() {
 
-	private void displayUsage() {
-		fill(255);
-		int x = 400;
-		int y = height - 120;
-		for (int i = 0; i < 7; i++) {
-			text(Messages.getString("LetterFlowEditor." + i), x, y);
-			y += 14;
-		}
-	}
+            @Override
+            public boolean accept(File dir, String name) {
+                return name.indexOf("png") != -1;
+            }
+        });
+        fd.setVisible(true);
+        String fileID = fd.getDirectory() + fd.getFile();
+        if (fileID != null) {
+            outline.clear();
+            inline.clear();
+            isOutline = true;
+            currPath = outline;
+            selectedID = 0;
+            PImage img = loadImage(fileID);
+            int countOut = 0;
+            int countIn = 0;
+            TColor colOut = TColor.newARGB(OUTLINE_COL);
+            TColor colIn = TColor.newARGB(INLINE_COL);
+            for (int y = 0, idx = 0; y < img.height; y++) {
+                for (int x = 0; x < img.width; x++) {
+                    int c = img.pixels[idx++] & 0xffffff;
+                    if (c == OUTLINE_COL) {
+                        outline.add(new Pole(outline, countOut, x * scale, y
+                                * scale, colOut));
+                        countOut++;
+                    } else if (c == INLINE_COL) {
+                        inline.add(new Pole(inline, countIn, x * scale, y
+                                * scale, colIn));
+                        countIn++;
+                    }
+                }
+            }
+        } else {
+            System.exit(1);
+        }
+    }
 
-	@Override
-	public void draw() {
-		background(51);
-		noStroke();
-		translate(offset, offset);
-		for (Pole p : currPath) {
-			if (p.id != selectedID) {
-				p.draw();
-			}
-		}
-		currPath.get(selectedID).draw();
-		displayFlowInfo();
-		displayUsage();
-	}
+    private void displayFlowInfo() {
+        int y = 0;
+        for (Pole p : currPath) {
+            fill(p.id == selectedID ? SELECTED_COL : p.col.toARGB());
+            text(p.id + ": " + p.flow[0] + "," + p.flow[1], 400, y);
+            y += 14;
+        }
+    }
 
-	private void exportFlowInfo() {
-		String flow = "<!-- " + (isOutline ? "out" : "in") + "line -->\n";
-		for (Pole p : currPath) {
-			flow += "<node>" + p.flow[0] + "," + p.flow[1] + "</node>\n";
-		}
-		println(flow);
-	}
+    private void displayUsage() {
+        fill(255);
+        int x = 400;
+        int y = height - 120;
+        for (int i = 0; i < 7; i++) {
+            text(Messages.getString("LetterFlowEditor." + i), x, y);
+            y += 14;
+        }
+    }
 
-	@Override
-	public void keyPressed() {
-		if (keyCode == UP || keyCode == RIGHT) {
-			selectedID = (selectedID + 1) % currPath.size();
-		}
-		if (keyCode == DOWN || keyCode == LEFT) {
-			selectedID--;
-			if (selectedID < 0) {
-				selectedID += currPath.size();
-			}
-		}
-		if (key == 's') {
-			exportFlowInfo();
-		}
-		if (key == 'l') {
-			chooseLetter();
-		}
-		if (key == ' ') {
-			if (inline.size() > 0) {
-				isOutline = !isOutline;
-				currPath = isOutline ? outline : inline;
-				selectedID = 0;
-			}
-		}
-	}
+    @Override
+    public void draw() {
+        background(51);
+        noStroke();
+        translate(offset, offset);
+        for (Pole p : currPath) {
+            if (p.id != selectedID) {
+                p.draw();
+            }
+        }
+        currPath.get(selectedID).draw();
+        displayFlowInfo();
+        displayUsage();
+    }
 
-	@Override
-	public void mousePressed() {
-		Pole clicked = null;
-		for (Pole p : currPath) {
-			float dx = abs(p.x - mouseX + offset);
-			float dy = abs(p.y - mouseY + offset);
-			if (dx < 20 && dy < 20) {
-				clicked = p;
-				break;
-			}
-		}
-		if (clicked != null) {
-			Pole selected = currPath.get(selectedID);
-			int flowID = mouseButton == LEFT ? 0 : 1;
-			selected.flow[flowID] = clicked.id;
-			int partnerID = clicked.id > selectedID ? 1 : 0;
-			if (clicked.flow[partnerID] != -1) {
-				if (clicked.flow[(partnerID + 1) % 2] == -1) {
-					clicked.flow[(partnerID + 1) % 2] = selectedID;
-				}
-			} else {
-				clicked.flow[partnerID] = selectedID;
-			}
-		}
-	}
+    private void exportFlowInfo() {
+        String flow = "<!-- " + (isOutline ? "out" : "in") + "line -->\n";
+        for (Pole p : currPath) {
+            flow += "<node>" + p.flow[0] + "," + p.flow[1] + "</node>\n";
+        }
+        println(flow);
+    }
 
-	@Override
-	public void setup() {
-		size(640, 480);
-		smooth();
-		textFont(createFont("SansSerif", 10));
-		chooseLetter();
-	}
+    @Override
+    public void keyPressed() {
+        if (keyCode == UP || keyCode == RIGHT) {
+            selectedID = (selectedID + 1) % currPath.size();
+        }
+        if (keyCode == DOWN || keyCode == LEFT) {
+            selectedID--;
+            if (selectedID < 0) {
+                selectedID += currPath.size();
+            }
+        }
+        if (key == 's') {
+            exportFlowInfo();
+        }
+        if (key == 'l') {
+            chooseLetter();
+        }
+        if (key == ' ') {
+            if (inline.size() > 0) {
+                isOutline = !isOutline;
+                currPath = isOutline ? outline : inline;
+                selectedID = 0;
+            }
+        }
+    }
+
+    @Override
+    public void mousePressed() {
+        Pole clicked = null;
+        for (Pole p : currPath) {
+            float dx = abs(p.x - mouseX + offset);
+            float dy = abs(p.y - mouseY + offset);
+            if (dx < 20 && dy < 20) {
+                clicked = p;
+                break;
+            }
+        }
+        if (clicked != null) {
+            Pole selected = currPath.get(selectedID);
+            int flowID = mouseButton == LEFT ? 0 : 1;
+            selected.flow[flowID] = clicked.id;
+            int partnerID = clicked.id > selectedID ? 1 : 0;
+            if (clicked.flow[partnerID] != -1) {
+                if (clicked.flow[(partnerID + 1) % 2] == -1) {
+                    clicked.flow[(partnerID + 1) % 2] = selectedID;
+                }
+            } else {
+                clicked.flow[partnerID] = selectedID;
+            }
+        }
+    }
+
+    @Override
+    public void setup() {
+        size(640, 480);
+        smooth();
+        textFont(createFont("SansSerif", 10));
+        chooseLetter();
+    }
 }

@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -21,19 +23,20 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Messages {
-	private static final String BUNDLE_NAME = "onedotzero.tools.messages"; //$NON-NLS-1$
 
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
-			.getBundle(BUNDLE_NAME);
+    private static final String BUNDLE_NAME = "onedotzero.tools.messages"; //$NON-NLS-1$
 
-	public static String getString(String key) {
-		try {
-			return RESOURCE_BUNDLE.getString(key);
-		} catch (MissingResourceException e) {
-			return '!' + key + '!';
-		}
-	}
+    private static final ResourceBundle RESOURCE_BUNDLE =
+            ResourceBundle.getBundle(BUNDLE_NAME);
 
-	private Messages() {
-	}
+    public static String getString(String key) {
+        try {
+            return RESOURCE_BUNDLE.getString(key);
+        } catch (MissingResourceException e) {
+            return '!' + key + '!';
+        }
+    }
+
+    private Messages() {
+    }
 }

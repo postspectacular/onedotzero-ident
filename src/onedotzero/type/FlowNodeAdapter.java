@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,24 +29,24 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
  */
 public class FlowNodeAdapter extends XmlAdapter<String, int[]> {
 
-	@Override
-	public String marshal(int[] options) throws Exception {
-		String s = "";
-		for (int i = 0; i < options.length; i++) {
-			s += i + (i < options.length - 1 ? "," : "");
-		}
-		return s;
-	}
+    @Override
+    public String marshal(int[] options) throws Exception {
+        String s = "";
+        for (int i = 0; i < options.length; i++) {
+            s += i + (i < options.length - 1 ? "," : "");
+        }
+        return s;
+    }
 
-	@Override
-	public int[] unmarshal(String raw) throws Exception {
-		StringTokenizer st = new StringTokenizer(raw, ",");
-		int[] options = new int[st.countTokens()];
-		int i = 0;
-		while (st.hasMoreTokens()) {
-			options[i++] = Integer.parseInt(st.nextToken());
-		}
-		return options;
-	}
+    @Override
+    public int[] unmarshal(String raw) throws Exception {
+        StringTokenizer st = new StringTokenizer(raw, ",");
+        int[] options = new int[st.countTokens()];
+        int i = 0;
+        while (st.hasMoreTokens()) {
+            options[i++] = Integer.parseInt(st.nextToken());
+        }
+        return options;
+    }
 
 }

@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,25 +29,26 @@ import toxi.util.datatypes.TypedProperties;
  */
 public class MenuState extends AppState {
 
-	@Override
-	public void enter(ODZApp app, TypedProperties camConfig) {
-		app.getScheduler().enableProcessQueue(true);
-		CameraConfig camera = app.getCamera();
-		camera.enableModulation(true);
-		camera.targetPos.clear();
-		camera.targetZoom = camConfig.getFloat("defaults.state.menu.zoom",
-				0.75f);
-		camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
-		app.setUpdate(true);
-	}
+    @Override
+    public void enter(ODZApp app, TypedProperties camConfig) {
+        app.getScheduler().enableProcessQueue(true);
+        CameraConfig camera = app.getCamera();
+        camera.enableModulation(true);
+        camera.targetPos.clear();
+        camera.targetZoom =
+                camConfig.getFloat("defaults.state.menu.zoom", 0.75f);
+        camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
+        app.setUpdate(true);
+    }
 
-	@Override
-	public void pre(ODZApp app) {
-		long now = System.currentTimeMillis();
-		boolean enabled = now - app.getLastAppStateChange() > app.getConfig()
-				.getInt("message.menu.queue.delay", 10000)
-				|| now - app.getLastMessageTime() < app.getConfig().getInt(
-						"message.new.lockperiod", 2000);
-		app.getScheduler().enableProcessQueue(enabled);
-	}
+    @Override
+    public void pre(ODZApp app) {
+        long now = System.currentTimeMillis();
+        boolean enabled =
+                now - app.getLastAppStateChange() > app.getConfig().getInt(
+                        "message.menu.queue.delay", 10000)
+                        || now - app.getLastMessageTime() < app.getConfig()
+                                .getInt("message.new.lockperiod", 2000);
+        app.getScheduler().enableProcessQueue(enabled);
+    }
 }

@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,60 +29,60 @@ import oscP5.OscMessage;
  */
 public interface InteractionStateListener {
 
-	/**
-	 * Notification that an OSC message not directly handled by the
-	 * {@link OSCManager} has been received.
-	 * 
-	 * @param msg
-	 *            received message
-	 */
-	void oscMessageReceived(OscMessage msg);
+    /**
+     * Notification that an OSC message not directly handled by the
+     * {@link OSCManager} has been received.
+     * 
+     * @param msg
+     *            received message
+     */
+    void oscMessageReceived(OscMessage msg);
 
-	void setAppState(AppState state);
+    void setAppState(AppState state);
 
-	/**
-	 * Sets a new message received from the N900.
-	 * 
-	 * @param message
-	 */
-	void setMessage(String message);
+    /**
+     * Sets a new message received from the N900.
+     * 
+     * @param message
+     */
+    void setMessage(String message);
 
-	/**
-	 * Updates the shake vector and strength.
-	 * 
-	 * @param x
-	 * @param y
-	 * @param z
-	 * @param strength
-	 */
-	void setShake(float x, float y, float z, float strength);
+    /**
+     * Updates the shake vector and strength.
+     * 
+     * @param x
+     * @param y
+     * @param z
+     * @param strength
+     */
+    void setShake(float x, float y, float z, float strength);
 
-	/**
-	 * Updates the tilt vector.
-	 * 
-	 * @param x
-	 * @param y
-	 * @param z
-	 */
-	void setTilt(float x, float y, float z);
+    /**
+     * Updates the tilt vector.
+     * 
+     * @param x
+     * @param y
+     * @param z
+     */
+    void setTilt(float x, float y, float z);
 
-	/**
-	 * Updates the touch position.
-	 * 
-	 * @param x
-	 * @param y
-	 */
-	void setTouch(float x, float y);
+    /**
+     * Updates the touch position.
+     * 
+     * @param x
+     * @param y
+     */
+    void setTouch(float x, float y);
 
-	/**
-	 * Updates the zoom level.
-	 * 
-	 * @param zoom
-	 */
-	void setZoom(float zoom);
+    /**
+     * Updates the zoom level.
+     * 
+     * @param zoom
+     */
+    void setZoom(float zoom);
 
-	/**
-	 * Toggles the play/pause button (used to freeze ribbon animation).
-	 */
-	void togglePlayButton();
+    /**
+     * Toggles the play/pause button (used to freeze ribbon animation).
+     */
+    void togglePlayButton();
 }

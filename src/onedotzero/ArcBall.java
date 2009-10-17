@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,89 +37,89 @@ import toxi.math.MathUtils;
  */
 class ArcBall {
 
-	protected PApplet app;
-	protected Vec2D center;
-	protected Vec3D downPos, dragPos;
-	protected Quaternion currOrientation, downOrientation, dragOrientation;
-	protected Vec3D[] axisSet;
-	protected float radius;
-	protected int constrainedAxisID;
+    protected PApplet app;
+    protected Vec2D center;
+    protected Vec3D downPos, dragPos;
+    protected Quaternion currOrientation, downOrientation, dragOrientation;
+    protected Vec3D[] axisSet;
+    protected float radius;
+    protected int constrainedAxisID;
 
-	public ArcBall(PApplet app) {
-		this(app, app.width / 2.0f, app.height / 2.0f, MathUtils.min(
-				app.width / 2.0f, app.height / 2.0f));
-	}
+    public ArcBall(PApplet app) {
+        this(app, app.width / 2.0f, app.height / 2.0f, MathUtils.min(
+                app.width / 2.0f, app.height / 2.0f));
+    }
 
-	public ArcBall(PApplet app, float cx, float cy, float radius) {
-		this.app = app;
+    public ArcBall(PApplet app, float cx, float cy, float radius) {
+        this.app = app;
 
-		this.center = new Vec2D(cx, cy);
-		this.radius = radius;
+        this.center = new Vec2D(cx, cy);
+        this.radius = radius;
 
-		downPos = new Vec3D();
-		dragPos = new Vec3D();
+        downPos = new Vec3D();
+        dragPos = new Vec3D();
 
-		currOrientation = new Quaternion();
-		downOrientation = new Quaternion();
-		dragOrientation = new Quaternion();
+        currOrientation = new Quaternion();
+        downOrientation = new Quaternion();
+        dragOrientation = new Quaternion();
 
-		axisSet = new Vec3D[] { Vec3D.X_AXIS, Vec3D.Y_AXIS, Vec3D.Z_AXIS };
-		constrainedAxisID = -1;
-	}
+        axisSet = new Vec3D[] { Vec3D.X_AXIS, Vec3D.Y_AXIS, Vec3D.Z_AXIS };
+        constrainedAxisID = -1;
+    }
 
-	public void apply() {
-		currOrientation = dragOrientation.multiply(downOrientation);
-		applyQuatToRotation(currOrientation);
-	}
+    public void apply() {
+        currOrientation = dragOrientation.multiply(downOrientation);
+        applyQuatToRotation(currOrientation);
+    }
 
-	public void applyQuatToRotation(Quaternion q) {
-		float[] aa = q.toAxisAngle();
-		app.rotate(aa[0], aa[1], aa[2], aa[3]);
-	}
+    public void applyQuatToRotation(Quaternion q) {
+        float[] aa = q.toAxisAngle();
+        app.rotate(aa[0], aa[1], aa[2], aa[3]);
+    }
 
-	public Vec3D constrainVector(Vec3D v, Vec3D axis) {
-		Vec3D res = v.sub(axis.scale(axis.dot(v)));
-		return res.normalize();
-	}
+    public Vec3D constrainVector(Vec3D v, Vec3D axis) {
+        Vec3D res = v.sub(axis.scale(axis.dot(v)));
+        return res.normalize();
+    }
 
-	/**
-	 * @return the constrainedAxisID
-	 */
-	public int getConstrainedAxisID() {
-		return constrainedAxisID;
-	}
+    /**
+     * @return the constrainedAxisID
+     */
+    public int getConstrainedAxisID() {
+        return constrainedAxisID;
+    }
 
-	public Vec3D mapPointOnSphere(Vec2D pos) {
-		Vec2D p = pos.sub(center).scaleSelf(1 / radius);
-		Vec3D v = p.to3DXY();
-		float mag = p.magSquared();
-		if (mag > 1.0f) {
-			v.normalize();
-		} else {
-			v.z = (float) Math.sqrt(1.0f - mag);
-		}
-		return (constrainedAxisID == -1) ? v : constrainVector(v,
-				axisSet[constrainedAxisID]);
-	}
+    public Vec3D mapPointOnSphere(Vec2D pos) {
+        Vec2D p = pos.sub(center).scaleSelf(1 / radius);
+        Vec3D v = p.to3DXY();
+        float mag = p.magSquared();
+        if (mag > 1.0f) {
+            v.normalize();
+        } else {
+            v.z = (float) Math.sqrt(1.0f - mag);
+        }
+        return (constrainedAxisID == -1) ? v : constrainVector(v,
+                axisSet[constrainedAxisID]);
+    }
 
-	public void mouseDragged() {
-		dragPos = mapPointOnSphere(new Vec2D(app.mouseX, app.mouseY));
-		dragOrientation.set(downPos.dot(dragPos), downPos.cross(dragPos));
-	}
+    public void mouseDragged() {
+        dragPos = mapPointOnSphere(new Vec2D(app.mouseX, app.mouseY));
+        dragOrientation.set(downPos.dot(dragPos), downPos.cross(dragPos));
+    }
 
-	public void mousePressed() {
-		downPos = mapPointOnSphere(new Vec2D(app.mouseX, app.mouseY));
-		downOrientation.set(currOrientation);
-		dragOrientation.identity();
-	}
+    public void mousePressed() {
+        downPos = mapPointOnSphere(new Vec2D(app.mouseX, app.mouseY));
+        downOrientation.set(currOrientation);
+        dragOrientation.identity();
+    }
 
-	/**
-	 * @param constrainedAxisID
-	 *            the constrainedAxisID to set
-	 */
-	public void setConstrainedAxisID(int constrainedAxisID) {
-		if (constrainedAxisID >= 0 && constrainedAxisID < axisSet.length) {
-			this.constrainedAxisID = constrainedAxisID;
-		}
-	}
+    /**
+     * @param constrainedAxisID
+     *            the constrainedAxisID to set
+     */
+    public void setConstrainedAxisID(int constrainedAxisID) {
+        if (constrainedAxisID >= 0 && constrainedAxisID < axisSet.length) {
+            this.constrainedAxisID = constrainedAxisID;
+        }
+    }
 }

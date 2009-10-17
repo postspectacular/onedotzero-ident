@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,14 +29,14 @@ import toxi.math.MathUtils;
  */
 public class GridXInterleavePolePositioning implements PolePositionStrategy {
 
-	@Override
-	public Vec3D createPosition(int id, int total, Vec3D exclusion) {
-		float x = -1 + 2.0f * id / total;
-		float y = MathUtils.random(exclusion.y, 1f);
-		float z = MathUtils.random(exclusion.z, 1f);
-		z = MathUtils.random(1f) < 0.5 ? z : -z;
-		y = MathUtils.random(1f) < 0.5 ? y : -y;
-		return new Vec3D(x, y, z);
-	}
+    @Override
+    public Vec3D createPosition(int id, int total, Vec3D exclusion) {
+        float x = -1 + 2.0f * id / total;
+        float y = MathUtils.random(exclusion.y, 1f);
+        float z = MathUtils.random(exclusion.z, 1f);
+        z = MathUtils.random(1f) < 0.5 ? z : -z;
+        y = MathUtils.random(1f) < 0.5 ? y : -y;
+        return new Vec3D(x, y, z);
+    }
 
 }

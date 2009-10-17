@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -22,15 +24,15 @@ package onedotzero.message;
  */
 public interface MessageScheduleListener {
 
-	/**
-	 * Event notification that the entire message queue has been processed.
-	 */
-	public void messageQueueProcessed();
+    /**
+     * Event notification that the entire message queue has been processed.
+     */
+    public void messageQueueProcessed();
 
-	/**
-	 * Event notification that a new message has been scheduled.
-	 * 
-	 * @param msg
-	 */
-	public void messageScheduled(UserMessage msg);
+    /**
+     * Event notification that a new message has been scheduled.
+     * 
+     * @param msg
+     */
+    public void messageScheduled(UserMessage msg);
 }

@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -37,70 +39,70 @@ import toxi.math.MathUtils;
 @XmlRootElement(name = "messages")
 public class UserMessageProvider implements MessageProvider {
 
-	protected static final Logger logger = Logger
-			.getLogger(UserMessageProvider.class.getName());
+    protected static final Logger logger =
+            Logger.getLogger(UserMessageProvider.class.getName());
 
-	@XmlElement(name = "message")
-	public ArrayList<UserMessageLog> messages = new ArrayList<UserMessageLog>();
+    @XmlElement(name = "message")
+    public ArrayList<UserMessageLog> messages = new ArrayList<UserMessageLog>();
 
-	@XmlTransient
-	private int maxMessageCount;
+    @XmlTransient
+    private int maxMessageCount;
 
-	public UserMessageProvider() {
-		this(10);
-	}
+    public UserMessageProvider() {
+        this(10);
+    }
 
-	public UserMessageProvider(int maxMessageCount) {
-		this.maxMessageCount = maxMessageCount;
-	}
+    public UserMessageProvider(int maxMessageCount) {
+        this.maxMessageCount = maxMessageCount;
+    }
 
-	public void addMessage(String msg) {
-		if (messages.size() == maxMessageCount) {
-			saveMessages();
-			messages.clear();
-		}
-		messages.add(new UserMessageLog(msg));
-		logger.info("message added: " + msg);
-	}
+    public void addMessage(String msg) {
+        if (messages.size() == maxMessageCount) {
+            saveMessages();
+            messages.clear();
+        }
+        messages.add(new UserMessageLog(msg));
+        logger.info("message added: " + msg);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.data.MessageProvider#getMessage()
-	 */
-	@Override
-	public String getMessage() {
-		String msg = null;
-		if (messages.size() > 0) {
-			msg = messages.get(MathUtils.random(messages.size())).message;
-		} else {
-			msg = "@onedotzero you guys rock!";
-		}
-		return msg;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.data.MessageProvider#getMessage()
+     */
+    @Override
+    public String getMessage() {
+        String msg = null;
+        if (messages.size() > 0) {
+            msg = messages.get(MathUtils.random(messages.size())).message;
+        } else {
+            msg = "@onedotzero you guys rock!";
+        }
+        return msg;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.data.MessageProvider#init()
-	 */
-	@Override
-	public boolean init() {
-		return true;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.data.MessageProvider#init()
+     */
+    @Override
+    public boolean init() {
+        return true;
+    }
 
-	/**
-	 * Saves recent messages as XML file in the log folder with timestamp.
-	 */
-	private void saveMessages() {
-		String path = "log/messages-" + (System.currentTimeMillis() / 1000)
-				+ ".xml";
-		JAXBContext context;
-		try {
-			context = JAXBContext.newInstance(UserMessageProvider.class);
-			context.createMarshaller().marshal(this, new File(path));
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		}
-	}
+    /**
+     * Saves recent messages as XML file in the log folder with timestamp.
+     */
+    private void saveMessages() {
+        String path =
+                "log/messages-" + (System.currentTimeMillis() / 1000) + ".xml";
+        JAXBContext context;
+        try {
+            context = JAXBContext.newInstance(UserMessageProvider.class);
+            context.createMarshaller().marshal(this, new File(path));
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
+    }
 }

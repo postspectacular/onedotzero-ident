@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -33,47 +35,48 @@ import toxi.math.MathUtils;
  */
 public class AtomMessageProvider implements MessageProvider {
 
-	private AtomFeed feed;
-	private String feedUrl;
+    private AtomFeed feed;
+    private String feedUrl;
 
-	public AtomMessageProvider(String url) {
-		feedUrl = url;
-	}
+    public AtomMessageProvider(String url) {
+        feedUrl = url;
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.data.MessageProvider#getMessage()
-	 */
-	@Override
-	public String getMessage() {
-		return EntityStripper.flattenXML(feed.entries.get(MathUtils
-				.random(feed.entries.size())).title);
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.data.MessageProvider#getMessage()
+     */
+    @Override
+    public String getMessage() {
+        return EntityStripper.flattenXML(feed.entries.get(MathUtils
+                .random(feed.entries.size())).title);
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.data.MessageProvider#init()
-	 */
-	@Override
-	public boolean init() {
-		try {
-			JAXBContext context = JAXBContext.newInstance(AtomFeed.class);
-			feed = (AtomFeed) context.createUnmarshaller().unmarshal(
-					new URL(feedUrl));
-			return true;
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.data.MessageProvider#init()
+     */
+    @Override
+    public boolean init() {
+        try {
+            JAXBContext context = JAXBContext.newInstance(AtomFeed.class);
+            feed =
+                    (AtomFeed) context.createUnmarshaller().unmarshal(
+                            new URL(feedUrl));
+            return true;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-	@Override
-	public String toString() {
-		return getClass().getName() + ": " + feedUrl + " items: "
-				+ feed.entries.size();
-	}
+    @Override
+    public String toString() {
+        return getClass().getName() + ": " + feedUrl + " items: "
+                + feed.entries.size();
+    }
 }

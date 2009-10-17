@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,20 +29,20 @@ import toxi.math.MathUtils;
  */
 public class RandomXPolePositioning implements PolePositionStrategy {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.poles.strategies.PolePositionStrategy#createPosition(int,
-	 * int, toxi.geom.Vec3D)
-	 */
-	@Override
-	public Vec3D createPosition(int id, int total, Vec3D exclusion) {
-		float x = MathUtils.random(-1f, 1f) * 0.66f;
-		float y = MathUtils.random(exclusion.y, 1f);
-		float z = MathUtils.random(exclusion.z, 1f);
-		y = MathUtils.random(1f) < 0.5 ? y : -y;
-		z = (id % 2 == 0) ? z : -z;
-		return new Vec3D(x, y, z);
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.poles.strategies.PolePositionStrategy#createPosition(int,
+     * int, toxi.geom.Vec3D)
+     */
+    @Override
+    public Vec3D createPosition(int id, int total, Vec3D exclusion) {
+        float x = MathUtils.random(-1f, 1f) * 0.66f;
+        float y = MathUtils.random(exclusion.y, 1f);
+        float z = MathUtils.random(exclusion.z, 1f);
+        y = MathUtils.random(1f) < 0.5 ? y : -y;
+        z = (id % 2 == 0) ? z : -z;
+        return new Vec3D(x, y, z);
+    }
 
 }

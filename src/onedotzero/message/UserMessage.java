@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,60 +31,60 @@ import java.util.concurrent.PriorityBlockingQueue;
  */
 public class UserMessage implements Comparable<UserMessage> {
 
-	private List<MessageLine> lines;
-	private long birthTime;
-	private int ttl;
-	private int priority;
+    private List<MessageLine> lines;
+    private long birthTime;
+    private int ttl;
+    private int priority;
 
-	public UserMessage(List<MessageLine> lines, int ttl, int priority) {
-		this.lines = lines;
-		this.ttl = ttl;
-		this.priority = priority;
-	}
+    public UserMessage(List<MessageLine> lines, int ttl, int priority) {
+        this.lines = lines;
+        this.ttl = ttl;
+        this.priority = priority;
+    }
 
-	public void activate() {
-		birthTime = System.currentTimeMillis();
-	}
+    public void activate() {
+        birthTime = System.currentTimeMillis();
+    }
 
-	/**
-	 * Compares this priority of this message with the other one. Used by the
-	 * {@link PriorityBlockingQueue} in {@link MessageScheduler}.
-	 * 
-	 * @see java.lang.Comparable#compareTo(java.lang.Object)
-	 */
-	@Override
-	public int compareTo(UserMessage m) {
-		return m.priority - priority;
-	}
+    /**
+     * Compares this priority of this message with the other one. Used by the
+     * {@link PriorityBlockingQueue} in {@link MessageScheduler}.
+     * 
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
+    @Override
+    public int compareTo(UserMessage m) {
+        return m.priority - priority;
+    }
 
-	public List<MessageLine> getContent() {
-		return lines;
-	}
+    public List<MessageLine> getContent() {
+        return lines;
+    }
 
-	public int getPriority() {
-		return priority;
-	}
+    public int getPriority() {
+        return priority;
+    }
 
-	public boolean isActive() {
-		return System.currentTimeMillis() - birthTime < ttl;
-	}
+    public boolean isActive() {
+        return System.currentTimeMillis() - birthTime < ttl;
+    }
 
-	public void reducePriority() {
-		if (priority > 0) {
-			priority--;
-		}
-	}
+    public void reducePriority() {
+        if (priority > 0) {
+            priority--;
+        }
+    }
 
-	public void setPriority(int p) {
-		priority = p;
-	}
+    public void setPriority(int p) {
+        priority = p;
+    }
 
-	@Override
-	public String toString() {
-		String result = "";
-		for (MessageLine l : lines) {
-			result += l.text + " ";
-		}
-		return result;
-	}
+    @Override
+    public String toString() {
+        String result = "";
+        for (MessageLine l : lines) {
+            result += l.text + " ";
+        }
+        return result;
+    }
 }

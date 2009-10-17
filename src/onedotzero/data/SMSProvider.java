@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,64 +42,65 @@ import toxi.util.datatypes.TypedProperties;
  */
 public class SMSProvider extends Thread {
 
-	protected static final Logger logger = Logger.getLogger(SMSProvider.class
-			.getName());
+    protected static final Logger logger =
+            Logger.getLogger(SMSProvider.class.getName());
 
-	private TypedProperties config;
-	private boolean isActive = true;
-	private AtomFeed feed;
+    private TypedProperties config;
+    private boolean isActive = true;
+    private AtomFeed feed;
 
-	private Set<String> messageIndex;
+    private Set<String> messageIndex;
 
-	private ODZApp app;
+    private ODZApp app;
 
-	public SMSProvider(ODZApp app, TypedProperties conf) {
-		this.app = app;
-		this.config = conf;
-		this.messageIndex = Collections
-				.synchronizedSet(new HashSet<String>(100));
-	}
+    public SMSProvider(ODZApp app, TypedProperties conf) {
+        this.app = app;
+        this.config = conf;
+        this.messageIndex =
+                Collections.synchronizedSet(new HashSet<String>(100));
+    }
 
-	public boolean refresh() {
-		String feedUrl = config.getProperty("sms.feed.url");
-		logger.info("reloading sms feed: " + feedUrl);
-		try {
-			JAXBContext context = JAXBContext.newInstance(AtomFeed.class);
-			AtomFeed feed = (AtomFeed) context.createUnmarshaller().unmarshal(
-					new URL(feedUrl));
-			logger.info(feed.entries.size() + " entries loaded");
-			for (AtomEntry e : feed.entries) {
-				if (!messageIndex.contains(e.id)) {
-					app.setMessage(EntityStripper.flattenXML(e.title));
-					messageIndex.add(e.id);
-				} else {
-					logger.info("ignoring entry: " + e.id);
-				}
-			}
-			return true;
-		} catch (JAXBException e) {
-			e.printStackTrace();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}
+    public boolean refresh() {
+        String feedUrl = config.getProperty("sms.feed.url");
+        logger.info("reloading sms feed: " + feedUrl);
+        try {
+            JAXBContext context = JAXBContext.newInstance(AtomFeed.class);
+            AtomFeed feed =
+                    (AtomFeed) context.createUnmarshaller().unmarshal(
+                            new URL(feedUrl));
+            logger.info(feed.entries.size() + " entries loaded");
+            for (AtomEntry e : feed.entries) {
+                if (!messageIndex.contains(e.id)) {
+                    app.setMessage(EntityStripper.flattenXML(e.title));
+                    messageIndex.add(e.id);
+                } else {
+                    logger.info("ignoring entry: " + e.id);
+                }
+            }
+            return true;
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 
-	@Override
-	public void run() {
-		try {
-			while (isActive) {
-				refresh();
-				Thread.sleep(config.getInt("sms.feed.poll.delay", 30000));
-			}
-		} catch (InterruptedException e) {
-			logger.warning("sms thread interrupted");
-			isActive = false;
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            while (isActive) {
+                refresh();
+                Thread.sleep(config.getInt("sms.feed.poll.delay", 30000));
+            }
+        } catch (InterruptedException e) {
+            logger.warning("sms thread interrupted");
+            isActive = false;
+        }
+    }
 
-	public void shutdown() {
-		isActive = false;
-		interrupt();
-	}
+    public void shutdown() {
+        isActive = false;
+        interrupt();
+    }
 }

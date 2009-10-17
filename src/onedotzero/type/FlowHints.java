@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -29,7 +31,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  */
 public class FlowHints {
 
-	@XmlElement(name = "node")
-	@XmlJavaTypeAdapter(FlowNodeAdapter.class)
-	public List<int[]> routes = new ArrayList<int[]>();
+    @XmlElement(name = "node")
+    @XmlJavaTypeAdapter(FlowNodeAdapter.class)
+    public List<int[]> routes = new ArrayList<int[]>();
 }

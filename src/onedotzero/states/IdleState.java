@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,18 +29,18 @@ import toxi.util.datatypes.TypedProperties;
  */
 public class IdleState extends AppState {
 
-	@Override
-	public void enter(ODZApp app, TypedProperties camConfig) {
-		app.getScheduler().enableProcessQueue(false);
-		CameraConfig camera = app.getCamera();
-		camera.enableModulation(true);
-		camera.targetPos.clear();
-		camera.maxModAmpX = camConfig.getFloat("cam.modulation.x.amp", 0.1f);
-		camera.maxModAmpY = camConfig.getFloat("cam.modulation.y.amp", 0.1f);
-		camera.targetZoom = camConfig.getFloat("defaults.state.idle.zoom",
-				0.75f);
-		camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
-		app.setUpdate(true);
-	}
+    @Override
+    public void enter(ODZApp app, TypedProperties camConfig) {
+        app.getScheduler().enableProcessQueue(false);
+        CameraConfig camera = app.getCamera();
+        camera.enableModulation(true);
+        camera.targetPos.clear();
+        camera.maxModAmpX = camConfig.getFloat("cam.modulation.x.amp", 0.1f);
+        camera.maxModAmpY = camConfig.getFloat("cam.modulation.y.amp", 0.1f);
+        camera.targetZoom =
+                camConfig.getFloat("defaults.state.idle.zoom", 0.75f);
+        camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
+        app.setUpdate(true);
+    }
 
 }

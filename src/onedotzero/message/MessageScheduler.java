@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -32,117 +34,120 @@ import java.util.logging.Logger;
  */
 public class MessageScheduler extends Thread {
 
-	protected static final Logger logger = Logger
-			.getLogger(MessageScheduler.class.getName());
+    protected static final Logger logger =
+            Logger.getLogger(MessageScheduler.class.getName());
 
-	private PriorityBlockingQueue<UserMessage> queue = new PriorityBlockingQueue<UserMessage>();
+    private PriorityBlockingQueue<UserMessage> queue =
+            new PriorityBlockingQueue<UserMessage>();
 
-	private ArrayList<UserMessage> recentMessages = new ArrayList<UserMessage>();
+    private ArrayList<UserMessage> recentMessages =
+            new ArrayList<UserMessage>();
 
-	private UserMessage currentMessage;
+    private UserMessage currentMessage;
 
-	private List<MessageScheduleListener> listeners = new ArrayList<MessageScheduleListener>();
+    private List<MessageScheduleListener> listeners =
+            new ArrayList<MessageScheduleListener>();
 
-	private boolean isActive = true;
+    private boolean isActive = true;
 
-	private boolean doProcessQueue = true;
+    private boolean doProcessQueue = true;
 
-	private int maxRecentMessages;
+    private int maxRecentMessages;
 
-	public MessageScheduler(int maxRecentMessages) {
-		this.maxRecentMessages = maxRecentMessages;
-	}
+    public MessageScheduler(int maxRecentMessages) {
+        this.maxRecentMessages = maxRecentMessages;
+    }
 
-	public void addListener(MessageScheduleListener l) {
-		listeners.add(l);
-	}
+    public void addListener(MessageScheduleListener l) {
+        listeners.add(l);
+    }
 
-	/**
-	 * Adds a new message to the priority queue. Newly submitted messages have
-	 * the highest priority which is automatically reduced each time it's been
-	 * shown.
-	 * 
-	 * @param m
-	 */
-	public void addMessage(UserMessage m) {
-		queue.offer(m);
-		logger.info("new message added: " + m);
-		synchronized (recentMessages) {
-			recentMessages.add(m);
-			if (recentMessages.size() > maxRecentMessages) {
-				recentMessages.remove(0);
-				logger.info("removing oldest...");
-			}
-		}
-	}
+    /**
+     * Adds a new message to the priority queue. Newly submitted messages have
+     * the highest priority which is automatically reduced each time it's been
+     * shown.
+     * 
+     * @param m
+     */
+    public void addMessage(UserMessage m) {
+        queue.offer(m);
+        logger.info("new message added: " + m);
+        synchronized (recentMessages) {
+            recentMessages.add(m);
+            if (recentMessages.size() > maxRecentMessages) {
+                recentMessages.remove(0);
+                logger.info("removing oldest...");
+            }
+        }
+    }
 
-	public void enableProcessQueue(boolean state) {
-		logger.info("processing queue: " + state);
-		doProcessQueue = state;
-	}
+    public void enableProcessQueue(boolean state) {
+        logger.info("processing queue: " + state);
+        doProcessQueue = state;
+    }
 
-	public ArrayList<UserMessage> getRecentMessages() {
-		return recentMessages;
-	}
+    public ArrayList<UserMessage> getRecentMessages() {
+        return recentMessages;
+    }
 
-	public void replayRecent() {
-		logger.info("replay recent messages...");
-		synchronized (recentMessages) {
-			for (UserMessage m : recentMessages) {
-				m.reducePriority();
-				queue.offer(m);
-				logger.info("new message added: " + m);
-			}
-		}
-	}
+    public void replayRecent() {
+        logger.info("replay recent messages...");
+        synchronized (recentMessages) {
+            for (UserMessage m : recentMessages) {
+                m.reducePriority();
+                queue.offer(m);
+                logger.info("new message added: " + m);
+            }
+        }
+    }
 
-	@Override
-	public void run() {
-		try {
-			while (isActive) {
-				if (doProcessQueue) {
-					if (currentMessage == null
-							|| (currentMessage != null && !currentMessage
-									.isActive())) {
-						triggerNextMessage();
-					}
-					UserMessage nxt = queue.peek();
-					if (nxt != null) {
-						logger.info("next msg: " + nxt.getPriority());
-					}
-					if (nxt != null && currentMessage != null
-							&& nxt.getPriority() > currentMessage.getPriority()) {
-						triggerNextMessage();
-					}
-				}
-				Thread.sleep(1000);
-			}
-		} catch (InterruptedException e) {
-		}
-	}
+    @Override
+    public void run() {
+        try {
+            while (isActive) {
+                if (doProcessQueue) {
+                    if (currentMessage == null
+                            || (currentMessage != null && !currentMessage
+                                    .isActive())) {
+                        triggerNextMessage();
+                    }
+                    UserMessage nxt = queue.peek();
+                    if (nxt != null) {
+                        logger.info("next msg: " + nxt.getPriority());
+                    }
+                    if (nxt != null && currentMessage != null
+                            && nxt.getPriority() > currentMessage.getPriority()) {
+                        triggerNextMessage();
+                    }
+                }
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+        }
+    }
 
-	public void setDefaultMessage(UserMessage m) {
-		queue.offer(m);
-		triggerNextMessage();
-	}
+    public void setDefaultMessage(UserMessage m) {
+        queue.offer(m);
+        triggerNextMessage();
+    }
 
-	public void shutdown() {
-		isActive = false;
-	}
+    public void shutdown() {
+        isActive = false;
+    }
 
-	private synchronized void triggerNextMessage() {
-		UserMessage prev = currentMessage;
-		currentMessage = queue.poll();
-		if (currentMessage != null) {
-			logger.info("new message triggered" + currentMessage);
-			currentMessage.activate();
-			for (MessageScheduleListener l : listeners) {
-				l.messageScheduled(currentMessage);
-			}
-		} else if (prev != null) {
-			for (MessageScheduleListener l : listeners) {
-				l.messageQueueProcessed();
-			}
-		}
-	}
+    private synchronized void triggerNextMessage() {
+        UserMessage prev = currentMessage;
+        currentMessage = queue.poll();
+        if (currentMessage != null) {
+            logger.info("new message triggered" + currentMessage);
+            currentMessage.activate();
+            for (MessageScheduleListener l : listeners) {
+                l.messageScheduled(currentMessage);
+            }
+        } else if (prev != null) {
+            for (MessageScheduleListener l : listeners) {
+                l.messageQueueProcessed();
+            }
+        }
+    }
 }

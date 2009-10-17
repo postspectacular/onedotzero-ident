@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -26,14 +28,14 @@ import toxi.util.datatypes.TypedProperties;
  */
 public class ShakeState extends AppState {
 
-	@Override
-	public void enter(ODZApp app, TypedProperties camConfig) {
-		app.getScheduler().enableProcessQueue(true);
-		CameraConfig camera = app.getCamera();
-		camera.targetPos.clear();
-		camera.enableModulation(false);
-		app.initRibbonShake(app.getOldRibbons());
-		app.initRibbonShake(app.getRibbons());
-	}
+    @Override
+    public void enter(ODZApp app, TypedProperties camConfig) {
+        app.getScheduler().enableProcessQueue(true);
+        CameraConfig camera = app.getCamera();
+        camera.targetPos.clear();
+        camera.enableModulation(false);
+        app.initRibbonShake(app.getOldRibbons());
+        app.initRibbonShake(app.getRibbons());
+    }
 
 }

@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,23 +37,23 @@ import toxi.geom.Vec2D;
  */
 public class Path {
 
-	@XmlElement(name = "vec2d")
-	public ArrayList<Vec2D> points = new ArrayList<Vec2D>();
+    @XmlElement(name = "vec2d")
+    public ArrayList<Vec2D> points = new ArrayList<Vec2D>();
 
-	@XmlAttribute(name = "seq")
-	@XmlJavaTypeAdapter(SequenceAdapter.class)
-	public int[] sequenceIndex;
+    @XmlAttribute(name = "seq")
+    @XmlJavaTypeAdapter(SequenceAdapter.class)
+    public int[] sequenceIndex;
 
-	@XmlElement(name = "flow")
-	public FlowHints flowHints;
+    @XmlElement(name = "flow")
+    public FlowHints flowHints;
 
-	@Override
-	public String toString() {
-		String s = "";
-		for (int i : sequenceIndex) {
-			Vec2D p = points.get(i);
-			s += p.toString() + " ";
-		}
-		return s;
-	}
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i : sequenceIndex) {
+            Vec2D p = points.get(i);
+            s += p.toString() + " ";
+        }
+        return s;
+    }
 }

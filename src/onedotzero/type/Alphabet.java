@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -40,39 +42,39 @@ import onedotzero.ODZApp;
 @XmlRootElement
 public class Alphabet {
 
-	@XmlAttribute(name = "baseHeight")
-	public int baseHeight;
+    @XmlAttribute(name = "baseHeight")
+    public int baseHeight;
 
-	@XmlElement(name = "letter")
-	public List<Letter> letters = new ArrayList<Letter>();
+    @XmlElement(name = "letter")
+    public List<Letter> letters = new ArrayList<Letter>();
 
-	public HashMap<String, Letter> nameLookup = new HashMap<String, Letter>();
+    public HashMap<String, Letter> nameLookup = new HashMap<String, Letter>();
 
-	public Letter getForName(char name) {
-		return nameLookup.get("" + name);
-	}
+    public Letter getForName(char name) {
+        return nameLookup.get("" + name);
+    }
 
-	public Letter getForName(String name) {
-		return nameLookup.get(name);
-	}
+    public Letter getForName(String name) {
+        return nameLookup.get(name);
+    }
 
-	public float getWidthForString(String txt) {
-		float width = 0;
-		int len = txt.length();
-		Letter prevLetter = null;
-		for (int i = 0; i < len; i++) {
-			Letter letter = getForName(txt.charAt(i));
-			if (letter != null) {
-				width += letter.getWidth() + letter.getKerning(prevLetter);
-				prevLetter = letter;
-			}
-		}
-		return width;
-	}
+    public float getWidthForString(String txt) {
+        float width = 0;
+        int len = txt.length();
+        Letter prevLetter = null;
+        for (int i = 0; i < len; i++) {
+            Letter letter = getForName(txt.charAt(i));
+            if (letter != null) {
+                width += letter.getWidth() + letter.getKerning(prevLetter);
+                prevLetter = letter;
+            }
+        }
+        return width;
+    }
 
-	public void init() {
-		for (Letter l : letters) {
-			nameLookup.put(l.id, l);
-		}
-	}
+    public void init() {
+        for (Letter l : letters) {
+            nameLookup.put(l.id, l);
+        }
+    }
 }

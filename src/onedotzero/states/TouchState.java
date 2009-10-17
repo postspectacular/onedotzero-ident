@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -27,27 +29,27 @@ import toxi.util.datatypes.TypedProperties;
  */
 public class TouchState extends AppState {
 
-	@Override
-	public void enter(ODZApp app, TypedProperties camConfig) {
-		app.getScheduler().enableProcessQueue(true);
-		CameraConfig camera = app.getCamera();
-		camera.enableModulation(true);
-		camera.targetPos.clear();
-	}
+    @Override
+    public void enter(ODZApp app, TypedProperties camConfig) {
+        app.getScheduler().enableProcessQueue(true);
+        CameraConfig camera = app.getCamera();
+        camera.enableModulation(true);
+        camera.targetPos.clear();
+    }
 
-	@Override
-	public void update(ODZApp app) {
-		app.updateRibbonTouch();
-	}
+    @Override
+    public void update(ODZApp app) {
+        app.updateRibbonTouch();
+    }
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see onedotzero.states.AppState#updateTilt(float, float, float)
-	 */
-	@Override
-	public void updateTilt(ODZApp app, float x, float y, float z) {
-		Vec3D dir = new Vec3D(x, y, z);
-		app.getCamera().targetTiltOrient.set(0, dir.normalize());
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see onedotzero.states.AppState#updateTilt(float, float, float)
+     */
+    @Override
+    public void updateTilt(ODZApp app, float x, float y, float z) {
+        Vec3D dir = new Vec3D(x, y, z);
+        app.getCamera().targetTiltOrient.set(0, dir.normalize());
+    }
 }

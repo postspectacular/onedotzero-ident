@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -30,38 +32,39 @@ import toxi.math.MathUtils;
  */
 public class WordWrapFormatter implements MessageFormatter {
 
-	private Pattern wrapPattern;
-	private int maxLen;
+    private Pattern wrapPattern;
+    private int maxLen;
 
-	public WordWrapFormatter(int lineWidth) {
-		this.maxLen = lineWidth;
-		// pattern taken from a comment by Jeremy Stein on:
-		// http://joust.kano.net/weblog/archives/000060.html
-		wrapPattern = Pattern.compile("(\\S\\S{" + lineWidth + ",}|.{1,"
-				+ lineWidth + "})(\\s+|$)");
-	}
+    public WordWrapFormatter(int lineWidth) {
+        this.maxLen = lineWidth;
+        // pattern taken from a comment by Jeremy Stein on:
+        // http://joust.kano.net/weblog/archives/000060.html
+        wrapPattern =
+                Pattern.compile("(\\S\\S{" + lineWidth + ",}|.{1," + lineWidth
+                        + "})(\\s+|$)");
+    }
 
-	@Override
-	public List<String> format(String message) {
-		List<String> lines = new LinkedList<String>();
-		Matcher m = wrapPattern.matcher(message);
-		while (m.find()) {
-			String l = m.group().trim();
-			if (l.length() <= maxLen) {
-				lines.add(l);
-			} else {
-				while (l != null) {
-					lines
-							.add(l.substring(0, MathUtils.min(maxLen, l
-									.length())));
-					if (l.length() >= maxLen) {
-						l = l.substring(maxLen);
-					} else {
-						l = null;
-					}
-				}
-			}
-		}
-		return lines;
-	}
+    @Override
+    public List<String> format(String message) {
+        List<String> lines = new LinkedList<String>();
+        Matcher m = wrapPattern.matcher(message);
+        while (m.find()) {
+            String l = m.group().trim();
+            if (l.length() <= maxLen) {
+                lines.add(l);
+            } else {
+                while (l != null) {
+                    lines
+                            .add(l.substring(0, MathUtils.min(maxLen, l
+                                    .length())));
+                    if (l.length() >= maxLen) {
+                        l = l.substring(maxLen);
+                    } else {
+                        l = null;
+                    }
+                }
+            }
+        }
+        return lines;
+    }
 }

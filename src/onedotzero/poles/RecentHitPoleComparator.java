@@ -1,6 +1,8 @@
 /*
  * This file is part of onedotzero 2009 identity generator (ODZGen).
  * 
+ * Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.)
+ * 
  * ODZGen is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -24,20 +26,20 @@ import java.util.Comparator;
  */
 public class RecentHitPoleComparator implements Comparator<ParticlePole3D> {
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
-	 */
-	@Override
-	public int compare(ParticlePole3D a, ParticlePole3D b) {
-		if (a.lastHit < b.lastHit) {
-			return -1;
-		} else if (a.lastHit > b.lastHit) {
-			return 1;
-		} else {
-			return 0;
-		}
-	}
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+     */
+    @Override
+    public int compare(ParticlePole3D a, ParticlePole3D b) {
+        if (a.lastHit < b.lastHit) {
+            return -1;
+        } else if (a.lastHit > b.lastHit) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 
 }
