@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema targetNamespace="http://onedotzero.com/2009/alphabet" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:odz="http://onedotzero.com/2009/alphabet">
+
+    <complexType name="Alphabet">
+    	<sequence>
+    		<element name="letter" type="odz:Letter" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    	<attribute name="baseHeight" type="int" use="required"></attribute>
+    </complexType>
+
+    <complexType name="Letter">
+    	<sequence>
+    		<element name="outline" type="odz:Path" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    		<element name="inline" type="odz:Path" maxOccurs="1"
+    			minOccurs="1">
+    		</element>
+    	</sequence>
+    	<attribute name="id" type="string" use="required"></attribute>
+    	<attribute name="width" type="int" use="required"></attribute>
+    	<attribute name="isTall" type="boolean"></attribute>
+    	<attribute name="kern" type="int"></attribute>
+    	<attribute name="kernTall" type="int"></attribute>
+    </complexType>
+
+    <complexType name="Path">
+    	<sequence>
+    		<element name="vec2d" type="odz:Vec2D" maxOccurs="unbounded"
+    			minOccurs="0">
+    		</element>
+    		<element name="flow" type="odz:FlowHints" maxOccurs="1" minOccurs="1"></element>
+    	</sequence>
+    	<attribute name="seq" type="string"></attribute>
+    </complexType>
+
+    <complexType name="FlowHints">
+    	<sequence>
+    		<element name="node" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    	</sequence>
+    </complexType>
+    
+    <complexType name="Vec2D">
+    	<attribute name="x" type="float" use="required"></attribute>
+    	<attribute name="y" type="float" use="required"></attribute>
+    </complexType>
+</schema>

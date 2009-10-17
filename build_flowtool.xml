@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<project name="FatJar odzgen.jar (experimental)" default="main" basedir=".">
+	<!-- this file was created by Fat-Jar Eclipse Plug-in -->
+	<!-- the ANT-Export is in a very early stage, so this -->
+	<!-- is only experimental, ANT 1.6 or above is        -->
+	<!-- required, feedback is always welcome:            -->
+	<!--       http://sourceforge.net/projects/fjep       -->
+	<!-- uncomment the following lines if using ANT outside Eclipse -->
+	<!--
+        <property name="fjepPath" value="reference:file:plugins\net.sf.fjep.fatjar_0.0.31.jarfatjar.jar"/>
+        <taskdef name="fatjar.build" classname="net.sf.fjep.anttask.FJBuildTask" classpath="${fjepPath}"/>
+        <typedef name="fatjar.manifest" classname="net.sf.fjep.anttask.FJManifestType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.exclude" classname="net.sf.fjep.anttask.FJExcludeType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.jarsource" classname="net.sf.fjep.anttask.FJJarSourceType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.filesource" classname="net.sf.fjep.anttask.FJFileSourceType" classpath="${fjepPath}"/>
+    -->
+	<!-- uncomment the above lines to use ANT outside of Eclipse -->
+	<target name="init">
+		<property name="app.name" value="odzflowtool" />
+		<property name="release.version" value="${app.name}-20090928" />
+		<property name="release.mainclass" value="onedotzero.tools.LetterFlowEditor" />
+		<property name="release.dir" value="dist" />
+		<property name="asset.dir" value="assets" />
+		<property name="config.dir" value="config" />
+		<property name="release.jar" value="${app.name}.jar" />
+		<property name="release.zip" value="${release.dir}/${release.version}.zip" />
+	</target>
+	<target name="main" depends="init">
+		<fatjar.build output="${release.dir}/${release.jar}">
+			<fatjar.manifest mainclass="${release.mainclass}" />
+			<fatjar.filesource path="bin" relpath="">
+				<fatjar.exclude relpath="onedotzero/data/" />
+				<fatjar.exclude relpath="onedotzero/export/" />
+				<fatjar.exclude relpath="onedotzero/message/" />
+				<fatjar.exclude relpath="onedotzero/osc/" />
+				<fatjar.exclude relpath="onedotzero/poles/" />
+				<fatjar.exclude relpath="onedotzero/test/" />
+				<fatjar.exclude relpath="onedotzero/text/" />
+				<fatjar.exclude relpath="onedotzero/type/" />
+			</fatjar.filesource>
+			<fatjar.jarsource file="lib/core.jar" relpath="" />
+			<fatjar.jarsource file="lib/colorutils.jar" relpath="" />
+			<fatjar.jarsource file="lib/toxiclibscore.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/activation.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/jaxb-api.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/jaxb-impl.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/jaxb-xjc.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/jaxb1-impl.jar" relpath="" />
+			<fatjar.jarsource file="lib/jaxb/jsr173_1.0_api.jar" relpath="" />
+		</fatjar.build>
+		<zip destfile="${release.zip}">
+			<zipfileset dir="${release.dir}" includes="${release.jar}" prefix="${release.version}" />
+			<zipfileset dir="${asset.dir}" includes="*.*" prefix="${release.version}/assets" />
+			<zipfileset dir="${asset.dir}/alphabet" includes="*.*" prefix="${release.version}/assets/alphabet" />
+			<zipfileset dir="${asset.dir}/alphabet/png" includes="*.*" prefix="${release.version}/assets/alphabet/png" />
+			<zipfileset dir="${asset.dir}/alphabet/png/chars" includes="*.*" prefix="${release.version}/assets/alphabet/png/chars" />
+			<zipfileset dir="${asset.dir}/alphabet/png/upper" includes="*.*" prefix="${release.version}/assets/alphabet/png/upper" />
+			<zipfileset dir="launch" includes="run_flow.*" prefix="${release.version}" />
+		</zip>
+		<copy file="${release.zip}" tofile="${release.dir}/${app.name}-latest.zip"/>
+	</target>
+</project>

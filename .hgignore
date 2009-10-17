@@ -1,0 +1,17 @@
+syntax: glob
+
+.DS_Store
+
+*.orig
+*.swp
+*.*~
+*.zip
+*.db
+
+bin
+export
+dist
+dev
+docs
+log
+

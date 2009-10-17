@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		hardcoded pole positions which are always present if custom poles are
+		enabled in app.properties file
+	-->
+<poles>
+	<pole x="-750" y="-700" z="60" />
+</poles>

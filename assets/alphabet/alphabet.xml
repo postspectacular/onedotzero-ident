@@ -1,0 +1,2229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<alphabet baseheight="136">
+	<letter id=" " width="30">
+		<outline seq="">
+			<flow />
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="a" width="95">
+		<outline seq="0,1,5,11,17,16,13,15,14,12,10,9,8,6,3,2,7,4">
+			<vec2d x="16" y="43" />
+			<vec2d x="61" y="43" />
+			<vec2d x="19" y="53" />
+			<vec2d x="57" y="53" />
+			<vec2d x="2" y="57" />
+			<vec2d x="76" y="58" />
+			<vec2d x="66" y="62" />
+			<vec2d x="8" y="63" />
+			<vec2d x="66" y="77" />
+			<vec2d x="13" y="91" />
+			<vec2d x="0" y="103" />
+			<vec2d x="76" y="118" />
+			<vec2d x="0" y="119" />
+			<vec2d x="69" y="126" />
+			<vec2d x="16" y="135" />
+			<vec2d x="60" y="135" />
+			<vec2d x="72" y="135" />
+			<vec2d x="81" y="135" />
+			<flow>
+				<node>1,4</node>
+				<node>0,5</node>
+				<node>3,7</node>
+				<node>2,6</node>
+				<node>0,7</node>
+				<node>1,11</node>
+				<node>3,8</node>
+				<node>2,4</node>
+				<node>6,9</node>
+				<node>8,10</node>
+				<node>9,12</node>
+				<node>5,17</node>
+				<node>10,14</node>
+				<node>15,16</node>
+				<node>12,15</node>
+				<node>13,14</node>
+				<node>13,17</node>
+				<node>11,16</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="67" y="86" />
+			<vec2d x="19" y="99" />
+			<vec2d x="10" y="107" />
+			<vec2d x="10" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="125" />
+			<vec2d x="57" y="125" />
+			<flow>
+				<node>1,4</node>
+				<node>0,2</node>
+				<node>1,3</node>
+				<node>2,5</node>
+				<node>0,6</node>
+				<node>3,6</node>
+				<node>4,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="b" width="96">
+		<outline seq="0,1,4,2,3,5,7,12,11,8,10,9,6">
+			<vec2d x="5" y="1" />
+			<vec2d x="15" y="1" />
+			<vec2d x="21" y="43" />
+			<vec2d x="66" y="43" />
+			<vec2d x="15" y="49" />
+			<vec2d x="81" y="58" />
+			<vec2d x="5" y="117" />
+			<vec2d x="81" y="120" />
+			<vec2d x="13" y="127" />
+			<vec2d x="0" y="135" />
+			<vec2d x="10" y="135" />
+			<vec2d x="21" y="135" />
+			<vec2d x="66" y="135" />
+			<flow>
+				<node>1,6</node>
+				<node>4,0</node>
+				<node>3,4</node>
+				<node>5,2</node>
+				<node>2,1</node>
+				<node>7,3</node>
+				<node>9,0</node>
+				<node>12,5</node>
+				<node>10,11</node>
+				<node>6,10</node>
+				<node>9,8</node>
+				<node>12,8</node>
+				<node>11,7</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,2,5,7,6,4,3">
+			<vec2d x="25" y="52" />
+			<vec2d x="62" y="52" />
+			<vec2d x="72" y="62" />
+			<vec2d x="14" y="63" />
+			<vec2d x="14" y="115" />
+			<vec2d x="72" y="116" />
+			<vec2d x="25" y="126" />
+			<vec2d x="62" y="126" />
+			<flow>
+				<node>1,3</node>
+				<node>2,0</node>
+				<node>5,1</node>
+				<node>4,0</node>
+				<node>6,3</node>
+				<node>7,2</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="c" width="89">
+		<outline seq="0,1,4,7,3,2,6,9,12,13,8,11,15,14,10,5">
+			<vec2d x="16" y="43" />
+			<vec2d x="61" y="43" />
+			<vec2d x="20" y="52" />
+			<vec2d x="56" y="52" />
+			<vec2d x="75" y="57" />
+			<vec2d x="0" y="59" />
+			<vec2d x="9" y="63" />
+			<vec2d x="68" y="64" />
+			<vec2d x="68" y="114" />
+			<vec2d x="9" y="115" />
+			<vec2d x="0" y="119" />
+			<vec2d x="74" y="120" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<vec2d x="16" y="135" />
+			<vec2d x="60" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,6</node>
+				<node>7,2</node>
+				<node>7,1</node>
+				<node>10,0</node>
+				<node>9,2</node>
+				<node>4,3</node>
+				<node>13,11</node>
+				<node>12,6</node>
+				<node>14,5</node>
+				<node>15,8</node>
+				<node>13,9</node>
+				<node>12,8</node>
+				<node>15,10</node>
+				<node>14,11</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="d" width="95" isTall="true">
+		<outline seq="0,1,6,12,11,8,10,9,7,5,2,3,4">
+			<vec2d x="67" y="1" />
+			<vec2d x="76" y="1" />
+			<vec2d x="16" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="67" y="50" />
+			<vec2d x="0" y="59" />
+			<vec2d x="76" y="117" />
+			<vec2d x="0" y="119" />
+			<vec2d x="69" y="127" />
+			<vec2d x="16" y="135" />
+			<vec2d x="61" y="135" />
+			<vec2d x="72" y="135" />
+			<vec2d x="81" y="135" />
+			<flow>
+				<node>1,4</node>
+				<node>0,6</node>
+				<node>3,5</node>
+				<node>2,4</node>
+				<node>0,3</node>
+				<node>2,7</node>
+				<node>1,12</node>
+				<node>5,9</node>
+				<node>10,11</node>
+				<node>7,10</node>
+				<node>8,9</node>
+				<node>8,12</node>
+				<node>6,11</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,3,5,7,6,4,2">
+			<vec2d x="20" y="52" />
+			<vec2d x="57" y="52" />
+			<vec2d x="9" y="62" />
+			<vec2d x="67" y="62" />
+			<vec2d x="9" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,4</node>
+				<node>1,5</node>
+				<node>2,6</node>
+				<node>3,7</node>
+				<node>4,7</node>
+				<node>5,6</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="e" width="95">
+		<outline seq="0,1,3,5,4,7,10,11,13,12,8,2">
+			<vec2d x="16" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="0" y="59" />
+			<vec2d x="76" y="59" />
+			<vec2d x="9" y="93" />
+			<vec2d x="76" y="93" />
+			<vec2d x="68" y="114" />
+			<vec2d x="9" y="115" />
+			<vec2d x="0" y="119" />
+			<vec2d x="75" y="121" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<vec2d x="16" y="135" />
+			<vec2d x="61" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,8</node>
+				<node>1,5</node>
+				<node>5,7</node>
+				<node>3,4</node>
+				<node>9,11</node>
+				<node>4,10</node>
+				<node>2,12</node>
+				<node>6,13</node>
+				<node>7,11</node>
+				<node>6,10</node>
+				<node>8,13</node>
+				<node>9,12</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,3,5,4,2">
+			<vec2d x="20" y="52" />
+			<vec2d x="56" y="52" />
+			<vec2d x="9" y="63" />
+			<vec2d x="67" y="63" />
+			<vec2d x="9" y="85" />
+			<vec2d x="67" y="85" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,4</node>
+				<node>1,5</node>
+				<node>2,5</node>
+				<node>3,4</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="f" width="64" isTall="true">
+		<outline seq="0,1,3,2,5,8,9,13,12,15,14,11,10,6,7,4">
+			<vec2d x="28" y="1" />
+			<vec2d x="50" y="1" />
+			<vec2d x="32" y="10" />
+			<vec2d x="50" y="10" />
+			<vec2d x="12" y="17" />
+			<vec2d x="22" y="21" />
+			<vec2d x="1" y="43" />
+			<vec2d x="12" y="43" />
+			<vec2d x="22" y="43" />
+			<vec2d x="50" y="43" />
+			<vec2d x="1" y="52" />
+			<vec2d x="12" y="52" />
+			<vec2d x="22" y="52" />
+			<vec2d x="50" y="52" />
+			<vec2d x="12" y="135" />
+			<vec2d x="22" y="135" />
+			<flow>
+				<node>1,4</node>
+				<node>3,0</node>
+				<node>3,5</node>
+				<node>2,1</node>
+				<node>7,0</node>
+				<node>8,2</node>
+				<node>7,10</node>
+				<node>6,4</node>
+				<node>9,5</node>
+				<node>8,13</node>
+				<node>11,6</node>
+				<node>14,10</node>
+				<node>13,15</node>
+				<node>12,9</node>
+				<node>15,11</node>
+				<node>12,12</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="g" width="94">
+		<outline seq="0,1,4,2,3,6,13,18,17,14,11,15,16,12,8,10,9,7,5">
+			<vec2d x="16" y="44" />
+			<vec2d x="61" y="44" />
+			<vec2d x="72" y="44" />
+			<vec2d x="81" y="44" />
+			<vec2d x="69" y="52" />
+			<vec2d x="0" y="60" />
+			<vec2d x="76" y="61" />
+			<vec2d x="0" y="119" />
+			<vec2d x="67" y="129" />
+			<vec2d x="17" y="135" />
+			<vec2d x="60" y="135" />
+			<vec2d x="9" y="151" />
+			<vec2d x="67" y="151" />
+			<vec2d x="76" y="156" />
+			<vec2d x="2" y="157" />
+			<vec2d x="20" y="162" />
+			<vec2d x="56" y="162" />
+			<vec2d x="16" y="171" />
+			<vec2d x="61" y="171" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,4</node>
+				<node>6,2</node>
+				<node>2,1</node>
+				<node>7,0</node>
+				<node>13,3</node>
+				<node>9,5</node>
+				<node>10,12</node>
+				<node>10,7</node>
+				<node>9,8</node>
+				<node>14,15</node>
+				<node>16,8</node>
+				<node>18,6</node>
+				<node>17,11</node>
+				<node>16,11</node>
+				<node>15,12</node>
+				<node>18,14</node>
+				<node>17,13</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,2,5,7,6,4,3">
+			<vec2d x="20" y="53" />
+			<vec2d x="57" y="53" />
+			<vec2d x="67" y="63" />
+			<vec2d x="9" y="64" />
+			<vec2d x="9" y="115" />
+			<vec2d x="67" y="116" />
+			<vec2d x="20" y="126" />
+			<vec2d x="57" y="126" />
+			<flow>
+				<node>1,3</node>
+				<node>2,0</node>
+				<node>5,1</node>
+				<node>4,0</node>
+				<node>6,3</node>
+				<node>7,2</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="h" width="90">
+		<outline seq="">
+			<vec2d x="0" y="1" />
+			<vec2d x="9" y="1" />
+			<vec2d x="26" y="43" />
+			<vec2d x="61" y="43" />
+			<vec2d x="9" y="52" />
+			<vec2d x="28" y="52" />
+			<vec2d x="56" y="52" />
+			<vec2d x="76" y="58" />
+			<vec2d x="67" y="63" />
+			<vec2d x="9" y="64" />
+			<vec2d x="0" y="135" />
+			<vec2d x="9" y="135" />
+			<vec2d x="67" y="135" />
+			<vec2d x="76" y="135" />
+			<flow>
+				<node>1,10</node>
+				<node>4,0</node>
+				<node>3,4</node>
+				<node>7,2</node>
+				<node>2,1</node>
+				<node>6,9</node>
+				<node>8,5</node>
+				<node>13,3</node>
+				<node>12,6</node>
+				<node>11,5</node>
+				<node>11,0</node>
+				<node>10,9</node>
+				<node>13,8</node>
+				<node>12,7</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="i" width="35" isTall="true">
+		<outline seq="0,1,3,2,4,5,9,8,7,6">
+			<vec2d x="11" y="1" />
+			<vec2d x="21" y="1" />
+			<vec2d x="11" y="12" />
+			<vec2d x="21" y="12" />
+			<vec2d x="0" y="42" />
+			<vec2d x="21" y="42" />
+			<vec2d x="0" y="51" />
+			<vec2d x="11" y="51" />
+			<vec2d x="11" y="135" />
+			<vec2d x="21" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,3</node>
+				<node>1,2</node>
+				<node>5,6</node>
+				<node>4,9</node>
+				<node>4,7</node>
+				<node>6,8</node>
+				<node>7,9</node>
+				<node>5,8</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="j" width="46">
+		<outline seq="4,5,9,13,12,10,11,8,7,6">
+			<vec2d x="22" y="0" />
+			<vec2d x="32" y="0" />
+			<vec2d x="22" y="11" />
+			<vec2d x="32" y="11" />
+			<vec2d x="1" y="42" />
+			<vec2d x="32" y="42" />
+			<vec2d x="1" y="51" />
+			<vec2d x="22" y="51" />
+			<vec2d x="22" y="164" />
+			<vec2d x="32" y="168" />
+			<vec2d x="0" y="175" />
+			<vec2d x="11" y="175" />
+			<vec2d x="0" y="184" />
+			<vec2d x="15" y="184" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>1,2</node>
+				<node>5,6</node>
+				<node>9,4</node>
+				<node>7,4</node>
+				<node>8,6</node>
+				<node>11,7</node>
+				<node>13,5</node>
+				<node>11,12</node>
+				<node>10,8</node>
+				<node>13,10</node>
+				<node>12,9</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="k" width="95">
+		<outline seq="0,1,4,5,2,3,6,12,11,8,7,10,9">
+			<vec2d x="0" y="1" />
+			<vec2d x="10" y="1" />
+			<vec2d x="69" y="43" />
+			<vec2d x="81" y="43" />
+			<vec2d x="10" y="84" />
+			<vec2d x="36" y="84" />
+			<vec2d x="45" y="89" />
+			<vec2d x="10" y="94" />
+			<vec2d x="36" y="94" />
+			<vec2d x="0" y="135" />
+			<vec2d x="10" y="135" />
+			<vec2d x="69" y="135" />
+			<vec2d x="82" y="135" />
+			<flow>
+				<node>1,9</node>
+				<node>4,0</node>
+				<node>3,5</node>
+				<node>6,2</node>
+				<node>5,1</node>
+				<node>4,2</node>
+				<node>12,3</node>
+				<node>8,10</node>
+				<node>11,7</node>
+				<node>10,0</node>
+				<node>9,7</node>
+				<node>12,8</node>
+				<node>11,6</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="l" width="35" kern="-12" kernTall="-4" isTall="true">
+		<outline seq="0,1,5,4,3,2">
+			<vec2d x="0" y="1" />
+			<vec2d x="20" y="1" />
+			<vec2d x="0" y="10" />
+			<vec2d x="11" y="10" />
+			<vec2d x="11" y="135" />
+			<vec2d x="21" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>5,0</node>
+				<node>3,0</node>
+				<node>4,2</node>
+				<node>5,3</node>
+				<node>4,1</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="m" width="128">
+		<outline
+			seq="0,1,10,2,3,11,4,5,12,23,22,16,9,8,15,21,20,14,7,6,17,19,18,13">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="31" y="43" />
+			<vec2d x="48" y="43" />
+			<vec2d x="71" y="43" />
+			<vec2d x="98" y="43" />
+			<vec2d x="33" y="52" />
+			<vec2d x="45" y="52" />
+			<vec2d x="75" y="52" />
+			<vec2d x="95" y="52" />
+			<vec2d x="14" y="53" />
+			<vec2d x="59" y="54" />
+			<vec2d x="114" y="59" />
+			<vec2d x="5" y="60" />
+			<vec2d x="55" y="62" />
+			<vec2d x="65" y="62" />
+			<vec2d x="105" y="62" />
+			<vec2d x="15" y="64" />
+			<vec2d x="5" y="135" />
+			<vec2d x="15" y="135" />
+			<vec2d x="55" y="135" />
+			<vec2d x="65" y="135" />
+			<vec2d x="105" y="135" />
+			<vec2d x="114" y="135" />
+			<flow>
+				<node>1,13</node>
+				<node>0,10</node>
+				<node>3,10</node>
+				<node>2,11</node>
+				<node>5,11</node>
+				<node>4,12</node>
+				<node>7,17</node>
+				<node>6,14</node>
+				<node>9,15</node>
+				<node>8,16</node>
+				<node>1,2</node>
+				<node>3,4</node>
+				<node>5,23</node>
+				<node>0,18</node>
+				<node>7,20</node>
+				<node>8,21</node>
+				<node>9,22</node>
+				<node>6,19</node>
+				<node>13,19</node>
+				<node>17,18</node>
+				<node>14,21</node>
+				<node>15,20</node>
+				<node>16,23</node>
+				<node>12,22</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="n" width="100">
+		<outline seq="0,1,6,2,3,7,14,13,9,5,4,10,12,11,8">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="31" y="43" />
+			<vec2d x="65" y="43" />
+			<vec2d x="34" y="52" />
+			<vec2d x="61" y="52" />
+			<vec2d x="13" y="53" />
+			<vec2d x="81" y="59" />
+			<vec2d x="5" y="61" />
+			<vec2d x="72" y="63" />
+			<vec2d x="14" y="64" />
+			<vec2d x="5" y="135" />
+			<vec2d x="14" y="135" />
+			<vec2d x="72" y="135" />
+			<vec2d x="81" y="135" />
+			<flow>
+				<node>1,8</node>
+				<node>0,6</node>
+				<node>3,6</node>
+				<node>2,7</node>
+				<node>5,10</node>
+				<node>4,9</node>
+				<node>1,2</node>
+				<node>3,14</node>
+				<node>0,11</node>
+				<node>5,13</node>
+				<node>4,12</node>
+				<node>8,12</node>
+				<node>10,11</node>
+				<node>9,14</node>
+				<node>7,13</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="o" width="90">
+		<outline seq="0,1,3,5,7,6,4,2">
+			<vec2d x="16" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="0" y="59" />
+			<vec2d x="76" y="59" />
+			<vec2d x="0" y="119" />
+			<vec2d x="76" y="119" />
+			<vec2d x="16" y="135" />
+			<vec2d x="60" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,4</node>
+				<node>1,5</node>
+				<node>2,6</node>
+				<node>3,7</node>
+				<node>4,7</node>
+				<node>5,6</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,3,5,7,6,4,2">
+			<vec2d x="20" y="52" />
+			<vec2d x="56" y="52" />
+			<vec2d x="9" y="63" />
+			<vec2d x="67" y="63" />
+			<vec2d x="9" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>0,3</node>
+				<node>0,4</node>
+				<node>1,5</node>
+				<node>2,6</node>
+				<node>3,7</node>
+				<node>4,7</node>
+				<node>5,6</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="p" width="95">
+		<outline seq="0,1,4,2,3,6,7,10,9,8,12,11,5">
+			<vec2d x="0" y="44" />
+			<vec2d x="9" y="44" />
+			<vec2d x="20" y="44" />
+			<vec2d x="65" y="44" />
+			<vec2d x="13" y="52" />
+			<vec2d x="5" y="60" />
+			<vec2d x="81" y="60" />
+			<vec2d x="81" y="120" />
+			<vec2d x="14" y="130" />
+			<vec2d x="20" y="136" />
+			<vec2d x="65" y="136" />
+			<vec2d x="5" y="178" />
+			<vec2d x="14" y="178" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,4</node>
+				<node>6,2</node>
+				<node>2,1</node>
+				<node>11,0</node>
+				<node>7,3</node>
+				<node>10,6</node>
+				<node>9,12</node>
+				<node>10,8</node>
+				<node>9,7</node>
+				<node>12,5</node>
+				<node>11,8</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,3,5,7,6,4,2">
+			<vec2d x="25" y="53" />
+			<vec2d x="61" y="53" />
+			<vec2d x="14" y="64" />
+			<vec2d x="72" y="64" />
+			<vec2d x="14" y="116" />
+			<vec2d x="72" y="116" />
+			<vec2d x="25" y="127" />
+			<vec2d x="61" y="127" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="q" width="95">
+		<outline seq="0,1,4,2,3,6,12,11,8,10,9,7,5">
+			<vec2d x="16" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="72" y="43" />
+			<vec2d x="81" y="43" />
+			<vec2d x="69" y="51" />
+			<vec2d x="0" y="59" />
+			<vec2d x="76" y="60" />
+			<vec2d x="0" y="119" />
+			<vec2d x="67" y="129" />
+			<vec2d x="16" y="135" />
+			<vec2d x="60" y="135" />
+			<vec2d x="67" y="177" />
+			<vec2d x="76" y="177" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,4</node>
+				<node>6,2</node>
+				<node>2,1</node>
+				<node>7,0</node>
+				<node>12,3</node>
+				<node>9,5</node>
+				<node>10,11</node>
+				<node>10,7</node>
+				<node>9,8</node>
+				<node>12,8</node>
+				<node>11,6</node>
+			</flow>
+		</outline>
+		<inline seq="0,1,3,5,7,6,4,2">
+			<vec2d x="20" y="52" />
+			<vec2d x="56" y="52" />
+			<vec2d x="9" y="63" />
+			<vec2d x="67" y="63" />
+			<vec2d x="9" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="r" width="75" isTall="true">
+		<outline seq="0,1,6,2,3,7,10,5,4,9,12,11,8">
+			<vec2d x="1" y="43" />
+			<vec2d x="11" y="43" />
+			<vec2d x="32" y="43" />
+			<vec2d x="50" y="43" />
+			<vec2d x="34" y="52" />
+			<vec2d x="46" y="52" />
+			<vec2d x="14" y="53" />
+			<vec2d x="64" y="57" />
+			<vec2d x="6" y="61" />
+			<vec2d x="16" y="63" />
+			<vec2d x="57" y="64" />
+			<vec2d x="6" y="135" />
+			<vec2d x="16" y="135" />
+			<flow>
+				<node>1,8</node>
+				<node>0,6</node>
+				<node>3,6</node>
+				<node>2,7</node>
+				<node>5,9</node>
+				<node>4,10</node>
+				<node>1,2</node>
+				<node>3,10</node>
+				<node>0,11</node>
+				<node>4,12</node>
+				<node>5,7</node>
+				<node>8,12</node>
+				<node>9,11</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="s" width="90">
+		<outline seq="0,1,4,7,3,2,6,8,10,14,19,18,15,12,16,17,13,11,9,5">
+			<vec2d x="16" y="43" />
+			<vec2d x="61" y="43" />
+			<vec2d x="20" y="53" />
+			<vec2d x="57" y="53" />
+			<vec2d x="75" y="57" />
+			<vec2d x="0" y="59" />
+			<vec2d x="10" y="63" />
+			<vec2d x="68" y="64" />
+			<vec2d x="10" y="76" />
+			<vec2d x="0" y="83" />
+			<vec2d x="76" y="94" />
+			<vec2d x="66" y="101" />
+			<vec2d x="9" y="114" />
+			<vec2d x="66" y="116" />
+			<vec2d x="76" y="120" />
+			<vec2d x="2" y="121" />
+			<vec2d x="20" y="125" />
+			<vec2d x="57" y="125" />
+			<vec2d x="16" y="135" />
+			<vec2d x="61" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>0,4</node>
+				<node>3,6</node>
+				<node>2,7</node>
+				<node>1,7</node>
+				<node>0,9</node>
+				<node>2,8</node>
+				<node>3,4</node>
+				<node>6,10</node>
+				<node>5,11</node>
+				<node>8,14</node>
+				<node>9,13</node>
+				<node>15,16</node>
+				<node>11,17</node>
+				<node>10,19</node>
+				<node>12,18</node>
+				<node>12,17</node>
+				<node>13,16</node>
+				<node>15,19</node>
+				<node>14,18</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="t" width="66">
+		<outline seq="0,1,4,5,9,8,10,12,13,15,14,11,7,6,2,3">
+			<vec2d x="12" y="1" />
+			<vec2d x="22" y="1" />
+			<vec2d x="1" y="43" />
+			<vec2d x="12" y="43" />
+			<vec2d x="22" y="43" />
+			<vec2d x="50" y="43" />
+			<vec2d x="1" y="52" />
+			<vec2d x="12" y="52" />
+			<vec2d x="22" y="52" />
+			<vec2d x="50" y="52" />
+			<vec2d x="22" y="115" />
+			<vec2d x="12" y="119" />
+			<vec2d x="32" y="125" />
+			<vec2d x="50" y="126" />
+			<vec2d x="28" y="135" />
+			<vec2d x="50" y="135" />
+			<flow>
+				<node>1,3</node>
+				<node>0,4</node>
+				<node>3,6</node>
+				<node>0,2</node>
+				<node>1,5</node>
+				<node>4,9</node>
+				<node>2,7</node>
+				<node>6,11</node>
+				<node>9,10</node>
+				<node>5,8</node>
+				<node>8,12</node>
+				<node>7,14</node>
+				<node>10,13</node>
+				<node>12,15</node>
+				<node>11,15</node>
+				<node>13,14</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="u" width="96">
+		<outline seq="0,1,5,8,9,4,2,3,7,14,13,10,12,11,6">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="67" y="43" />
+			<vec2d x="76" y="43" />
+			<vec2d x="67" y="114" />
+			<vec2d x="10" y="115" />
+			<vec2d x="0" y="119" />
+			<vec2d x="76" y="119" />
+			<vec2d x="20" y="125" />
+			<vec2d x="48" y="125" />
+			<vec2d x="68" y="125" />
+			<vec2d x="16" y="135" />
+			<vec2d x="50" y="135" />
+			<vec2d x="71" y="135" />
+			<vec2d x="82" y="135" />
+			<flow>
+				<node>1,6</node>
+				<node>0,5</node>
+				<node>3,4</node>
+				<node>2,7</node>
+				<node>2,9</node>
+				<node>1,8</node>
+				<node>0,11</node>
+				<node>3,14</node>
+				<node>5,9</node>
+				<node>4,8</node>
+				<node>12,13</node>
+				<node>6,12</node>
+				<node>10,11</node>
+				<node>10,14</node>
+				<node>7,13</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="v" width="92" kern="-6">
+		<outline seq="0,1,4,2,3,6,5">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="72" y="43" />
+			<vec2d x="82" y="43" />
+			<vec2d x="41" y="118" />
+			<vec2d x="38" y="135" />
+			<vec2d x="45" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>0,4</node>
+				<node>3,4</node>
+				<node>2,6</node>
+				<node>1,2</node>
+				<node>0,6</node>
+				<node>3,5</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="w" width="124" kern="-6" kernTall="-6">
+		<outline seq="0,1,7,2,3,8,4,5,12,11,6,10,9">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="50" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="101" y="43" />
+			<vec2d x="110" y="43" />
+			<vec2d x="55" y="61" />
+			<vec2d x="29" y="116" />
+			<vec2d x="80" y="116" />
+			<vec2d x="25" y="135" />
+			<vec2d x="34" y="135" />
+			<vec2d x="76" y="135" />
+			<vec2d x="85" y="135" />
+			<flow>
+				<node>1,9</node>
+				<node>7,0</node>
+				<node>3,7</node>
+				<node>8,2</node>
+				<node>5,8</node>
+				<node>12,4</node>
+				<node>10,11</node>
+				<node>2,1</node>
+				<node>4,3</node>
+				<node>10,0</node>
+				<node>9,6</node>
+				<node>12,6</node>
+				<node>11,5</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<letter id="x" width="98">
+		<outline seq="0,1,4,2,3,6,11,10,7,9,8,5">
+			<vec2d x="0" y="43" />
+			<vec2d x="12" y="43" />
+			<vec2d x="74" y="43" />
+			<vec2d x="86" y="43" />
+			<vec2d x="43" y="81" />
+			<vec2d x="37" y="89" />
+			<vec2d x="50" y="89" />
+			<vec2d x="43" y="97" />
+			<vec2d x="0" y="135" />
+			<vec2d x="12" y="135" />
+			<vec2d x="74" y="135" />
+			<vec2d x="86" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>4,3</node>
+				<node>6,2</node>
+				<node>2,1</node>
+				<node>8,0</node>
+				<node>11,3</node>
+				<node>9,10</node>
+				<node>9,5</node>
+				<node>8,7</node>
+				<node>11,7</node>
+				<node>10,6</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="y" width="93">
+		<outline seq="0,1,4,5,2,3,9,8,7,6">
+			<vec2d x="0" y="43" />
+			<vec2d x="10" y="43" />
+			<vec2d x="69" y="43" />
+			<vec2d x="79" y="43" />
+			<vec2d x="31" y="126" />
+			<vec2d x="47" y="126" />
+			<vec2d x="25" y="135" />
+			<vec2d x="44" y="135" />
+			<vec2d x="31" y="185" />
+			<vec2d x="41" y="185" />
+			<flow>
+				<node>1,6</node>
+				<node>4,0</node>
+				<node>3,5</node>
+				<node>9,2</node>
+				<node>5,1</node>
+				<node>4,2</node>
+				<node>7,0</node>
+				<node>8,6</node>
+				<node>9,7</node>
+				<node>8,3</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="z" width="95">
+		<outline seq="0,1,2,5,6,9,8,7,4,3">
+			<vec2d x="0" y="43" />
+			<vec2d x="76" y="43" />
+			<vec2d x="76" y="49" />
+			<vec2d x="0" y="52" />
+			<vec2d x="61" y="52" />
+			<vec2d x="15" y="126" />
+			<vec2d x="76" y="126" />
+			<vec2d x="0" y="129" />
+			<vec2d x="0" y="135" />
+			<vec2d x="76" y="135" />
+			<flow>
+				<node>1,3</node>
+				<node>0,2</node>
+				<node>1,5</node>
+				<node>0,4</node>
+				<node>3,7</node>
+				<node>2,6</node>
+				<node>5,9</node>
+				<node>4,8</node>
+				<node>7,9</node>
+				<node>6,8</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow />
+		</inline>
+	</letter>
+	<!-- numbers below  -->
+	<letter id="0" width="89">
+		<outline seq="">
+			<vec2d x="15" y="43" />
+			<vec2d x="60" y="43" />
+			<vec2d x="0" y="58" />
+			<vec2d x="75" y="58" />
+			<vec2d x="75" y="119" />
+			<vec2d x="0" y="120" />
+			<vec2d x="15" y="135" />
+			<vec2d x="60" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>5,0</node>
+				<node>4,1</node>
+				<node>7,3</node>
+				<node>6,2</node>
+				<node>7,5</node>
+				<node>6,4</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="19" y="52" />
+			<vec2d x="55" y="52" />
+			<vec2d x="8" y="63" />
+			<vec2d x="66" y="63" />
+			<vec2d x="8" y="115" />
+			<vec2d x="66" y="115" />
+			<vec2d x="19" y="126" />
+			<vec2d x="55" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="1" width="90">
+		<outline seq="">
+			<vec2d x="36" y="43" />
+			<vec2d x="43" y="43" />
+			<vec2d x="33" y="60" />
+			<vec2d x="9" y="70" />
+			<vec2d x="15" y="76" />
+			<vec2d x="0" y="126" />
+			<vec2d x="33" y="126" />
+			<vec2d x="43" y="126" />
+			<vec2d x="76" y="126" />
+			<vec2d x="0" y="135" />
+			<vec2d x="76" y="135" />
+			<flow>
+				<node>1,3</node>
+				<node>7,0</node>
+				<node>4,6</node>
+				<node>0,4</node>
+				<node>3,2</node>
+				<node>6,9</node>
+				<node>5,2</node>
+				<node>8,1</node>
+				<node>10,6</node>
+				<node>10,5</node>
+				<node>9,8</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="2" width="92">
+		<outline seq="">
+			<vec2d x="17" y="43" />
+			<vec2d x="62" y="43" />
+			<vec2d x="21" y="52" />
+			<vec2d x="58" y="52" />
+			<vec2d x="78" y="59" />
+			<vec2d x="0" y="60" />
+			<vec2d x="69" y="62" />
+			<vec2d x="6" y="67" />
+			<vec2d x="69" y="76" />
+			<vec2d x="78" y="83" />
+			<vec2d x="15" y="91" />
+			<vec2d x="21" y="98" />
+			<vec2d x="3" y="103" />
+			<vec2d x="11" y="108" />
+			<vec2d x="11" y="126" />
+			<vec2d x="78" y="126" />
+			<vec2d x="3" y="135" />
+			<vec2d x="78" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,7</node>
+				<node>6,2</node>
+				<node>9,1</node>
+				<node>7,0</node>
+				<node>8,3</node>
+				<node>5,2</node>
+				<node>10,6</node>
+				<node>11,4</node>
+				<node>12,8</node>
+				<node>13,9</node>
+				<node>16,10</node>
+				<node>14,11</node>
+				<node>15,13</node>
+				<node>17,14</node>
+				<node>17,12</node>
+				<node>16,15</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="3" width="92" isTall="true">
+		<outline seq="92">
+			<vec2d x="2" y="12" />
+			<vec2d x="78" y="12" />
+			<vec2d x="78" y="18" />
+			<vec2d x="2" y="21" />
+			<vec2d x="64" y="21" />
+			<vec2d x="50" y="53" />
+			<vec2d x="62" y="54" />
+			<vec2d x="36" y="57" />
+			<vec2d x="36" y="63" />
+			<vec2d x="59" y="64" />
+			<vec2d x="78" y="70" />
+			<vec2d x="68" y="73" />
+			<vec2d x="7" y="110" />
+			<vec2d x="68" y="116" />
+			<vec2d x="0" y="117" />
+			<vec2d x="78" y="120" />
+			<vec2d x="22" y="125" />
+			<vec2d x="58" y="126" />
+			<vec2d x="18" y="135" />
+			<vec2d x="63" y="135" />
+			<flow>
+				<node>1,3</node>
+				<node>2,0</node>
+				<node>6,1</node>
+				<node>4,0</node>
+				<node>5,3</node>
+				<node>7,4</node>
+				<node>10,2</node>
+				<node>8,5</node>
+				<node>9,7</node>
+				<node>11,8</node>
+				<node>15,6</node>
+				<node>13,9</node>
+				<node>16,14</node>
+				<node>17,11</node>
+				<node>18,12</node>
+				<node>19,10</node>
+				<node>17,12</node>
+				<node>16,13</node>
+				<node>19,14</node>
+				<node>18,15</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="4" width="89">
+		<outline seq="">
+			<vec2d x="48" y="18" />
+			<vec2d x="60" y="18" />
+			<vec2d x="46" y="73" />
+			<vec2d x="54" y="73" />
+			<vec2d x="0" y="79" />
+			<vec2d x="8" y="83" />
+			<vec2d x="8" y="101" />
+			<vec2d x="46" y="101" />
+			<vec2d x="54" y="101" />
+			<vec2d x="75" y="101" />
+			<vec2d x="0" y="110" />
+			<vec2d x="46" y="110" />
+			<vec2d x="54" y="110" />
+			<vec2d x="75" y="110" />
+			<vec2d x="46" y="135" />
+			<vec2d x="54" y="135" />
+			<flow>
+				<node>1,4</node>
+				<node>5,0</node>
+				<node>3,7</node>
+				<node>8,2</node>
+				<node>10,0</node>
+				<node>6,1</node>
+				<node>7,5</node>
+				<node>6,2</node>
+				<node>9,3</node>
+				<node>13,8</node>
+				<node>11,4</node>
+				<node>14,10</node>
+				<node>13,15</node>
+				<node>12,9</node>
+				<node>15,11</node>
+				<node>12,14</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="5" width="92" isTall="true">
+		<outline seq="">
+			<vec2d x="2" y="12" />
+			<vec2d x="78" y="12" />
+			<vec2d x="11" y="21" />
+			<vec2d x="78" y="21" />
+			<vec2d x="11" y="54" />
+			<vec2d x="62" y="54" />
+			<vec2d x="2" y="63" />
+			<vec2d x="59" y="63" />
+			<vec2d x="78" y="70" />
+			<vec2d x="69" y="73" />
+			<vec2d x="7" y="110" />
+			<vec2d x="69" y="115" />
+			<vec2d x="0" y="117" />
+			<vec2d x="78" y="119" />
+			<vec2d x="23" y="126" />
+			<vec2d x="58" y="126" />
+			<vec2d x="18" y="135" />
+			<vec2d x="62" y="135" />
+			<flow>
+				<node>1,6</node>
+				<node>3,0</node>
+				<node>3,4</node>
+				<node>2,1</node>
+				<node>5,2</node>
+				<node>8,4</node>
+				<node>7,0</node>
+				<node>9,6</node>
+				<node>13,5</node>
+				<node>11,7</node>
+				<node>14,12</node>
+				<node>15,9</node>
+				<node>16,10</node>
+				<node>17,8</node>
+				<node>15,10</node>
+				<node>14,11</node>
+				<node>17,12</node>
+				<node>16,13</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="6" width="90">
+		<outline seq="">
+			<vec2d x="42" y="1" />
+			<vec2d x="52" y="1" />
+			<vec2d x="21" y="56" />
+			<vec2d x="61" y="56" />
+			<vec2d x="76" y="71" />
+			<vec2d x="0" y="72" />
+			<vec2d x="0" y="119" />
+			<vec2d x="76" y="119" />
+			<vec2d x="16" y="135" />
+			<vec2d x="60" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>2,0</node>
+				<node>3,1</node>
+				<node>4,2</node>
+				<node>7,3</node>
+				<node>6,0</node>
+				<node>8,5</node>
+				<node>9,4</node>
+				<node>9,6</node>
+				<node>8,7</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="15" y="66" />
+			<vec2d x="57" y="66" />
+			<vec2d x="9" y="75" />
+			<vec2d x="67" y="76" />
+			<vec2d x="10" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="7" width="90" isTall="true" kern="-12" kernTall="0">
+		<outline seq="">
+			<vec2d x="0" y="18" />
+			<vec2d x="76" y="18" />
+			<vec2d x="0" y="27" />
+			<vec2d x="66" y="27" />
+			<vec2d x="76" y="27" />
+			<vec2d x="37" y="135" />
+			<vec2d x="47" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>4,0</node>
+				<node>3,0</node>
+				<node>5,2</node>
+				<node>6,1</node>
+				<node>6,3</node>
+				<node>5,4</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="8" width="90" isTall="true">
+		<outline seq="">
+			<vec2d x="16" y="1" />
+			<vec2d x="60" y="1" />
+			<vec2d x="0" y="17" />
+			<vec2d x="76" y="17" />
+			<vec2d x="76" y="49" />
+			<vec2d x="0" y="50" />
+			<vec2d x="11" y="60" />
+			<vec2d x="65" y="60" />
+			<vec2d x="0" y="72" />
+			<vec2d x="76" y="72" />
+			<vec2d x="76" y="119" />
+			<vec2d x="0" y="120" />
+			<vec2d x="16" y="135" />
+			<vec2d x="61" y="135" />
+			<flow>
+				<node>2,1</node>
+				<node>3,0</node>
+				<node>5,0</node>
+				<node>4,1</node>
+				<node>7,3</node>
+				<node>6,2</node>
+				<node>8,5</node>
+				<node>9,4</node>
+				<node>11,6</node>
+				<node>10,7</node>
+				<node>13,9</node>
+				<node>12,8</node>
+				<node>13,11</node>
+				<node>12,10</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="20" y="10" />
+			<vec2d x="56" y="10" />
+			<vec2d x="9" y="21" />
+			<vec2d x="67" y="21" />
+			<vec2d x="9" y="45" />
+			<vec2d x="67" y="45" />
+			<vec2d x="20" y="56" />
+			<vec2d x="56" y="56" />
+			<vec2d x="20" y="65" />
+			<vec2d x="57" y="65" />
+			<vec2d x="9" y="76" />
+			<vec2d x="67" y="76" />
+			<vec2d x="9" y="115" />
+			<vec2d x="67" y="115" />
+			<vec2d x="20" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+				<node>9,10</node>
+				<node>11,8</node>
+				<node>12,8</node>
+				<node>13,9</node>
+				<node>14,10</node>
+				<node>15,11</node>
+				<node>15,12</node>
+				<node>14,13</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="9" width="89" isTall="true">
+		<outline seq="">
+			<vec2d x="16" y="12" />
+			<vec2d x="60" y="12" />
+			<vec2d x="0" y="28" />
+			<vec2d x="76" y="28" />
+			<vec2d x="76" y="74" />
+			<vec2d x="0" y="75" />
+			<vec2d x="16" y="91" />
+			<vec2d x="55" y="91" />
+			<vec2d x="30" y="135" />
+			<vec2d x="41" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>5,0</node>
+				<node>4,1</node>
+				<node>9,3</node>
+				<node>6,2</node>
+				<node>7,5</node>
+				<node>8,6</node>
+				<node>9,7</node>
+				<node>8,4</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="20" y="21" />
+			<vec2d x="57" y="21" />
+			<vec2d x="67" y="31" />
+			<vec2d x="9" y="32" />
+			<vec2d x="9" y="71" />
+			<vec2d x="67" y="73" />
+			<vec2d x="20" y="82" />
+			<vec2d x="61" y="82" />
+			<flow>
+				<node>1,3</node>
+				<node>2,0</node>
+				<node>5,1</node>
+				<node>4,0</node>
+				<node>6,3</node>
+				<node>7,2</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<!-- Uppercase -->
+	<letter id="N" width="106">
+		<outline seq="">
+			<vec2d x="0" y="0" />
+			<vec2d x="8" y="0" />
+			<vec2d x="83" y="0" />
+			<vec2d x="93" y="0" />
+			<vec2d x="9" y="21" />
+			<vec2d x="83" y="113" />
+			<vec2d x="0" y="135" />
+			<vec2d x="9" y="135" />
+			<vec2d x="85" y="135" />
+			<vec2d x="93" y="135" />
+			<flow>
+				<node>1,6</node>
+				<node>5,0</node>
+				<node>3,5</node>
+				<node>9,2</node>
+				<node>8,7</node>
+				<node>2,1</node>
+				<node>7,0</node>
+				<node>6,4</node>
+				<node>9,4</node>
+				<node>8,3</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="S" width="106">
+		<outline seq="">
+			<vec2d x="18" y="0" />
+			<vec2d x="76" y="0" />
+			<vec2d x="22" y="10" />
+			<vec2d x="72" y="10" />
+			<vec2d x="92" y="16" />
+			<vec2d x="0" y="18" />
+			<vec2d x="10" y="22" />
+			<vec2d x="85" y="23" />
+			<vec2d x="10" y="52" />
+			<vec2d x="0" y="59" />
+			<vec2d x="93" y="75" />
+			<vec2d x="84" y="82" />
+			<vec2d x="8" y="112" />
+			<vec2d x="84" y="113" />
+			<vec2d x="93" y="117" />
+			<vec2d x="2" y="118" />
+			<vec2d x="22" y="125" />
+			<vec2d x="72" y="125" />
+			<vec2d x="19" y="135" />
+			<vec2d x="75" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,6</node>
+				<node>7,2</node>
+				<node>7,1</node>
+				<node>9,0</node>
+				<node>8,2</node>
+				<node>4,3</node>
+				<node>10,6</node>
+				<node>11,5</node>
+				<node>14,8</node>
+				<node>13,9</node>
+				<node>16,15</node>
+				<node>17,11</node>
+				<node>19,10</node>
+				<node>18,12</node>
+				<node>17,12</node>
+				<node>16,13</node>
+				<node>19,15</node>
+				<node>18,14</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="C" width="105">
+		<outline seq="">
+			<vec2d x="18" y="0" />
+			<vec2d x="76" y="0" />
+			<vec2d x="22" y="10" />
+			<vec2d x="72" y="10" />
+			<vec2d x="92" y="16" />
+			<vec2d x="0" y="18" />
+			<vec2d x="10" y="22" />
+			<vec2d x="85" y="23" />
+			<vec2d x="85" y="112" />
+			<vec2d x="10" y="113" />
+			<vec2d x="0" y="116" />
+			<vec2d x="92" y="118" />
+			<vec2d x="22" y="125" />
+			<vec2d x="72" y="125" />
+			<vec2d x="19" y="135" />
+			<vec2d x="76" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,6</node>
+				<node>7,2</node>
+				<node>7,1</node>
+				<node>10,0</node>
+				<node>2,9</node>
+				<node>4,3</node>
+				<node>11,13</node>
+				<node>12,6</node>
+				<node>14,5</node>
+				<node>15,8</node>
+				<node>13,9</node>
+				<node>12,8</node>
+				<node>15,10</node>
+				<node>14,11</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="R" width="106">
+		<outline seq="">
+			<vec2d x="0" y="0" />
+			<vec2d x="76" y="0" />
+			<vec2d x="94" y="18" />
+			<vec2d x="94" y="54" />
+			<vec2d x="10" y="72" />
+			<vec2d x="50" y="72" />
+			<vec2d x="62" y="72" />
+			<vec2d x="76" y="72" />
+			<vec2d x="0" y="135" />
+			<vec2d x="10" y="135" />
+			<vec2d x="86" y="135" />
+			<vec2d x="97" y="135" />
+			<flow>
+				<node>1,8</node>
+				<node>2,0</node>
+				<node>3,1</node>
+				<node>7,2</node>
+				<node>9,5</node>
+				<node>10,4</node>
+				<node>11,7</node>
+				<node>6,3</node>
+				<node>9,0</node>
+				<node>8,4</node>
+				<node>11,5</node>
+				<node>10,6</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="10" y="10" />
+			<vec2d x="72" y="10" />
+			<vec2d x="84" y="22" />
+			<vec2d x="84" y="50" />
+			<vec2d x="10" y="62" />
+			<vec2d x="72" y="62" />
+			<flow>
+				<node>1,4</node>
+				<node>2,0</node>
+				<node>3,0</node>
+				<node>5,2</node>
+				<node>5,0</node>
+				<node>4,3</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="E" width="106">
+		<outline seq="">
+			<vec2d x="0" y="0" />
+			<vec2d x="94" y="0" />
+			<vec2d x="10" y="10" />
+			<vec2d x="94" y="10" />
+			<vec2d x="10" y="62" />
+			<vec2d x="94" y="62" />
+			<vec2d x="10" y="72" />
+			<vec2d x="94" y="72" />
+			<vec2d x="10" y="125" />
+			<vec2d x="94" y="125" />
+			<vec2d x="0" y="135" />
+			<vec2d x="94" y="135" />
+			<flow>
+				<node>1,10</node>
+				<node>3,0</node>
+				<node>3,4</node>
+				<node>2,1</node>
+				<node>5,2</node>
+				<node>7,4</node>
+				<node>8,7</node>
+				<node>6,5</node>
+				<node>9,6</node>
+				<node>11,8</node>
+				<node>11,0</node>
+				<node>10,9</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<!-- punctuation -->
+	<letter id="&amp;" width="112">
+		<outline seq="">
+			<vec2d x="17" y="1" />
+			<vec2d x="61" y="1" />
+			<vec2d x="0" y="18" />
+			<vec2d x="78" y="18" />
+			<vec2d x="0" y="56" />
+			<vec2d x="78" y="56" />
+			<vec2d x="12" y="68" />
+			<vec2d x="65" y="69" />
+			<vec2d x="0" y="80" />
+			<vec2d x="95" y="88" />
+			<vec2d x="101" y="94" />
+			<vec2d x="82" y="99" />
+			<vec2d x="88" y="108" />
+			<vec2d x="80" y="116" />
+			<vec2d x="0" y="118" />
+			<vec2d x="101" y="132" />
+			<vec2d x="17" y="135" />
+			<vec2d x="61" y="135" />
+			<vec2d x="93" y="137" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>8,4</node>
+				<node>11,5</node>
+				<node>14,6</node>
+				<node>10,11</node>
+				<node>12,9</node>
+				<node>9,7</node>
+				<node>15,10</node>
+				<node>18,17</node>
+				<node>16,8</node>
+				<node>18,12</node>
+				<node>17,14</node>
+				<node>16,13</node>
+				<node>15,13</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="22" y="10" />
+			<vec2d x="56" y="10" />
+			<vec2d x="9" y="23" />
+			<vec2d x="69" y="23" />
+			<vec2d x="9" y="51" />
+			<vec2d x="69" y="51" />
+			<vec2d x="21" y="63" />
+			<vec2d x="57" y="63" />
+			<vec2d x="21" y="73" />
+			<vec2d x="56" y="73" />
+			<vec2d x="9" y="85" />
+			<vec2d x="75" y="107" />
+			<vec2d x="9" y="113" />
+			<vec2d x="22" y="126" />
+			<vec2d x="56" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+				<node>9,10</node>
+				<node>11,8</node>
+				<node>12,8</node>
+				<node>14,9</node>
+				<node>13,10</node>
+				<node>14,12</node>
+				<node>13,11</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="@" width="101">
+		<outline seq="">
+			<vec2d x="17" y="26" />
+			<vec2d x="68" y="26" />
+			<vec2d x="21" y="35" />
+			<vec2d x="63" y="35" />
+			<vec2d x="0" y="44" />
+			<vec2d x="87" y="45" />
+			<vec2d x="77" y="49" />
+			<vec2d x="6" y="50" />
+			<vec2d x="17" y="56" />
+			<vec2d x="45" y="56" />
+			<vec2d x="56" y="56" />
+			<vec2d x="66" y="56" />
+			<vec2d x="54" y="65" />
+			<vec2d x="1" y="72" />
+			<vec2d x="61" y="73" />
+			<vec2d x="77" y="115" />
+			<vec2d x="61" y="117" />
+			<vec2d x="1" y="119" />
+			<vec2d x="87" y="120" />
+			<vec2d x="64" y="126" />
+			<vec2d x="68" y="126" />
+			<vec2d x="53" y="127" />
+			<vec2d x="17" y="135" />
+			<vec2d x="45" y="135" />
+			<vec2d x="56" y="135" />
+			<vec2d x="72" y="135" />
+			<flow>
+				<node>1,4</node>
+				<node>5,0</node>
+				<node>3,7</node>
+				<node>6,2</node>
+				<node>7,0</node>
+				<node>18,1</node>
+				<node>15,3</node>
+				<node>4,2</node>
+				<node>9,13</node>
+				<node>12,8</node>
+				<node>12,11</node>
+				<node>14,10</node>
+				<node>10,9</node>
+				<node>17,8</node>
+				<node>16,11</node>
+				<node>20,6</node>
+				<node>19,14</node>
+				<node>22,13</node>
+				<node>25,5</node>
+				<node>20,16</node>
+				<node>19,15</node>
+				<node>24,23</node>
+				<node>23,17</node>
+				<node>22,21</node>
+				<node>25,21</node>
+				<node>24,18</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<vec2d x="22" y="65" />
+			<vec2d x="41" y="65" />
+			<vec2d x="11" y="76" />
+			<vec2d x="51" y="76" />
+			<vec2d x="11" y="115" />
+			<vec2d x="51" y="115" />
+			<vec2d x="21" y="126" />
+			<vec2d x="40" y="126" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>6,2</node>
+				<node>7,3</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</inline>
+	</letter>
+	<letter id=")" width="64" isTall="true" kern="-4">
+		<outline seq="">
+			<vec2d x="0" y="-15" />
+			<vec2d x="20" y="-15" />
+			<vec2d x="0" y="-7" />
+			<vec2d x="15" y="-7" />
+			<vec2d x="37" y="2" />
+			<vec2d x="29" y="7" />
+			<vec2d x="50" y="49" />
+			<vec2d x="41" y="52" />
+			<vec2d x="41" y="84" />
+			<vec2d x="50" y="87" />
+			<vec2d x="29" y="129" />
+			<vec2d x="37" y="135" />
+			<vec2d x="0" y="143" />
+			<vec2d x="16" y="143" />
+			<vec2d x="0" y="152" />
+			<vec2d x="20" y="152" />
+			<flow>
+				<node>1,2</node>
+				<node>4,0</node>
+				<node>3,0</node>
+				<node>5,2</node>
+				<node>6,1</node>
+				<node>7,3</node>
+				<node>9,4</node>
+				<node>8,5</node>
+				<node>10,7</node>
+				<node>11,6</node>
+				<node>13,8</node>
+				<node>15,9</node>
+				<node>13,14</node>
+				<node>12,10</node>
+				<node>15,12</node>
+				<node>14,11</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="(" width="64" isTall="true">
+		<outline seq="">
+			<vec2d x="30" y="-15" />
+			<vec2d x="50" y="-15" />
+			<vec2d x="35" y="-7" />
+			<vec2d x="50" y="-7" />
+			<vec2d x="13" y="2" />
+			<vec2d x="21" y="7" />
+			<vec2d x="0" y="49" />
+			<vec2d x="9" y="52" />
+			<vec2d x="9" y="84" />
+			<vec2d x="0" y="87" />
+			<vec2d x="21" y="129" />
+			<vec2d x="13" y="135" />
+			<vec2d x="34" y="143" />
+			<vec2d x="50" y="143" />
+			<vec2d x="30" y="152" />
+			<vec2d x="50" y="152" />
+			<flow>
+				<node>1,4</node>
+				<node>3,0</node>
+				<node>3,5</node>
+				<node>2,1</node>
+				<node>6,0</node>
+				<node>7,2</node>
+				<node>9,4</node>
+				<node>8,5</node>
+				<node>10,7</node>
+				<node>11,6</node>
+				<node>12,8</node>
+				<node>14,9</node>
+				<node>13,10</node>
+				<node>15,12</node>
+				<node>15,11</node>
+				<node>14,13</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id=":" width="27">
+		<outline seq="">
+			<vec2d x="0" y="42" />
+			<vec2d x="13" y="42" />
+			<vec2d x="0" y="55" />
+			<vec2d x="13" y="55" />
+			<vec2d x="0" y="122" />
+			<vec2d x="13" y="122" />
+			<vec2d x="0" y="135" />
+			<vec2d x="13" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+				<node>5,6</node>
+				<node>7,4</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="," width="28">
+		<outline seq="">
+			<vec2d x="4" y="122" />
+			<vec2d x="17" y="122" />
+			<vec2d x="4" y="135" />
+			<vec2d x="17" y="135" />
+			<vec2d x="0" y="149" />
+			<vec2d x="12" y="153" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>4,0</node>
+				<node>5,1</node>
+				<node>5,2</node>
+				<node>4,3</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="-" width="90">
+		<outline seq="">
+			<vec2d x="0" y="84" />
+			<vec2d x="76" y="84" />
+			<vec2d x="0" y="94" />
+			<vec2d x="76" y="94" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="." width="27">
+		<outline seq="">
+			<vec2d x="0" y="122" />
+			<vec2d x="13" y="122" />
+			<vec2d x="0" y="135" />
+			<vec2d x="13" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="!" width="24" isTall="true">
+		<outline seq="">
+			<vec2d x="0" y="1" />
+			<vec2d x="10" y="1" />
+			<vec2d x="0" y="94" />
+			<vec2d x="10" y="94" />
+			<vec2d x="0" y="123" />
+			<vec2d x="10" y="123" />
+			<vec2d x="0" y="135" />
+			<vec2d x="10" y="135" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+				<node>5,6</node>
+				<node>7,4</node>
+				<node>7,4</node>
+				<node>6,5</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="?" width="107" isTall="true">
+		<outline seq="">
+			<vec2d x="18" y="1" />
+			<vec2d x="76" y="1" />
+			<vec2d x="23" y="10" />
+			<vec2d x="71" y="10" />
+			<vec2d x="93" y="18" />
+			<vec2d x="0" y="19" />
+			<vec2d x="10" y="23" />
+			<vec2d x="84" y="23" />
+			<vec2d x="0" y="38" />
+			<vec2d x="10" y="38" />
+			<vec2d x="84" y="45" />
+			<vec2d x="93" y="50" />
+			<vec2d x="42" y="87" />
+			<vec2d x="52" y="91" />
+			<vec2d x="42" y="108" />
+			<vec2d x="52" y="108" />
+			<vec2d x="42" y="124" />
+			<vec2d x="52" y="124" />
+			<vec2d x="42" y="135" />
+			<vec2d x="52" y="135" />
+			<flow>
+				<node>1,5</node>
+				<node>4,0</node>
+				<node>3,6</node>
+				<node>7,2</node>
+				<node>11,1</node>
+				<node>8,0</node>
+				<node>9,2</node>
+				<node>10,3</node>
+				<node>9,5</node>
+				<node>8,6</node>
+				<node>12,7</node>
+				<node>13,4</node>
+				<node>14,10</node>
+				<node>15,11</node>
+				<node>15,12</node>
+				<node>14,13</node>
+				<node>17,18</node>
+				<node>19,16</node>
+				<node>16,19</node>
+				<node>18,17</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="/" width="65" isTall="true">
+		<outline seq="">
+			<vec2d x="44" y="-11" />
+			<vec2d x="54" y="-11" />
+			<vec2d x="0" y="152" />
+			<vec2d x="11" y="152" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="'" width="24" isTall="true">
+		<outline seq="">
+			<vec2d x="0" y="1" />
+			<vec2d x="13" y="1" />
+			<vec2d x="0" y="26" />
+			<vec2d x="13" y="26" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id="&quot;" width="50" isTall="true">
+		<outline seq="">
+			<vec2d x="0" y="1" />
+			<vec2d x="13" y="1" />
+			<vec2d x="23" y="1" />
+			<vec2d x="36" y="1" />
+			<vec2d x="0" y="26" />
+			<vec2d x="13" y="26" />
+			<vec2d x="23" y="26" />
+			<vec2d x="36" y="26" />
+			<flow>
+				<node>4,1</node>
+				<node>5,0</node>
+				<node>3,6</node>
+				<node>7,2</node>
+				<node>5,0</node>
+				<node>4,1</node>
+				<node>7,2</node>
+				<node>6,3</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+	<letter id=";" width="30">
+		<outline seq="">
+			<vec2d x="4" y="43" />
+			<vec2d x="17" y="43" />
+			<vec2d x="4" y="55" />
+			<vec2d x="17" y="55" />
+			<vec2d x="17" y="122" />
+			<vec2d x="4" y="122" />
+			<vec2d x="4" y="135" />
+			<vec2d x="17" y="135" />
+			<vec2d x="0" y="149" />
+			<vec2d x="12" y="153" />
+			<flow>
+				<node>1,2</node>
+				<node>3,0</node>
+				<node>3,0</node>
+				<node>2,1</node>
+				<node>7,5</node>
+				<node>6,4</node>
+				<node>8,5</node>
+				<node>9,4</node>
+				<node>9,6</node>
+				<node>8,7</node>
+			</flow>
+		</outline>
+		<inline seq="">
+			<flow>
+			</flow>
+		</inline>
+	</letter>
+</alphabet>

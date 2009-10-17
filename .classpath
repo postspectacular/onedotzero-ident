@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/colorutils.jar"/>
+	<classpathentry kind="lib" path="lib/controlp5.jar"/>
+	<classpathentry kind="lib" path="lib/core.jar"/>
+	<classpathentry kind="lib" path="lib/datautils.jar"/>
+	<classpathentry kind="lib" path="lib/oscp5.jar"/>
+	<classpathentry kind="lib" path="lib/toxiclibscore.jar"/>
+	<classpathentry kind="lib" path="lib/opengl/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="lib/opengl/jogl.jar"/>
+	<classpathentry kind="lib" path="lib/opengl/opengl.jar"/>
+	<classpathentry kind="src" path="src.tools"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
