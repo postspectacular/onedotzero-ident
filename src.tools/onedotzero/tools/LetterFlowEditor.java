@@ -129,7 +129,7 @@ public class LetterFlowEditor extends PApplet {
             TColor colIn = TColor.newARGB(INLINE_COL);
             for (int y = 0, idx = 0; y < img.height; y++) {
                 for (int x = 0; x < img.width; x++) {
-                    int c = img.pixels[idx++] & 0xffffff;
+                    int c = img.pixels[idx++] | 0xff000000;
                     if (c == OUTLINE_COL) {
                         outline.add(new Pole(outline, countOut, x * scale, y
                                 * scale, colOut));

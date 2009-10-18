@@ -23,7 +23,7 @@
 		<property name="asset.dir" value="assets" />
 		<property name="config.dir" value="config" />
 		<property name="release.jar" value="${app.name}.jar" />
-		<property name="release.zip" value="${release.dir}/${release.version}.zip" />
+		<property name="release.zip" value="${release.dir}/${release.version}-bin.zip" />
 	</target>
 	<target name="main" depends="init">
 		<fatjar.build output="${release.dir}/${release.jar}">
@@ -34,6 +34,7 @@
 				<fatjar.exclude relpath="onedotzero/message/" />
 				<fatjar.exclude relpath="onedotzero/osc/" />
 				<fatjar.exclude relpath="onedotzero/poles/" />
+				<fatjar.exclude relpath="onedotzero/states/" />
 				<fatjar.exclude relpath="onedotzero/test/" />
 				<fatjar.exclude relpath="onedotzero/text/" />
 				<fatjar.exclude relpath="onedotzero/type/" />
@@ -41,12 +42,14 @@
 			<fatjar.jarsource file="lib/core.jar" relpath="" />
 			<fatjar.jarsource file="lib/colorutils.jar" relpath="" />
 			<fatjar.jarsource file="lib/toxiclibscore.jar" relpath="" />
+			<!--
 			<fatjar.jarsource file="lib/jaxb/activation.jar" relpath="" />
 			<fatjar.jarsource file="lib/jaxb/jaxb-api.jar" relpath="" />
 			<fatjar.jarsource file="lib/jaxb/jaxb-impl.jar" relpath="" />
 			<fatjar.jarsource file="lib/jaxb/jaxb-xjc.jar" relpath="" />
 			<fatjar.jarsource file="lib/jaxb/jaxb1-impl.jar" relpath="" />
 			<fatjar.jarsource file="lib/jaxb/jsr173_1.0_api.jar" relpath="" />
+			-->
 		</fatjar.build>
 		<zip destfile="${release.zip}">
 			<zipfileset dir="${release.dir}" includes="${release.jar}" prefix="${release.version}" />
@@ -55,8 +58,9 @@
 			<zipfileset dir="${asset.dir}/alphabet/png" includes="*.*" prefix="${release.version}/assets/alphabet/png" />
 			<zipfileset dir="${asset.dir}/alphabet/png/chars" includes="*.*" prefix="${release.version}/assets/alphabet/png/chars" />
 			<zipfileset dir="${asset.dir}/alphabet/png/upper" includes="*.*" prefix="${release.version}/assets/alphabet/png/upper" />
-			<zipfileset dir="launch" includes="run_flow.*" prefix="${release.version}" />
+			<zipfileset dir="launch" includes="run_flow.sh" prefix="${release.version}" filemode="755" />
+			<zipfileset dir="launch" includes="run_flow.bat" prefix="${release.version}" />
 		</zip>
-		<copy file="${release.zip}" tofile="${release.dir}/${app.name}-latest.zip"/>
+		<copy file="${release.zip}" tofile="${release.dir}/${app.name}-latest-bin.zip" />
 	</target>
 </project>

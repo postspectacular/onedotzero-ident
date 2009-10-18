@@ -78,7 +78,7 @@
 
 	<target name="release" depends="compile,javadoc" description="Packages binary and source builds">
 		<!-- binary release -->
-		<zip destfile="${release.zip}">
+		<zip destfile="${release.zip}" whenempty="create">
 			<zipfileset dir="${release.dir}" includes="${release.jar}" prefix="${release.version}" />
 			<zipfileset dir="lib/opengl" includes="*.dll" prefix="${release.version}" />
 			<zipfileset dir="lib/opengl" includes="*.jnilib" prefix="${release.version}" />
@@ -88,8 +88,8 @@
 			<zipfileset dir="${asset.dir}/feeds" includes="*.*" prefix="${release.version}/assets/feeds" />
 			<zipfileset dir="${asset.dir}/fonts" includes="*.*" prefix="${release.version}/assets/fonts" />
 			<zipfileset dir="${config.dir}" includes="*.*" prefix="${release.version}/config" />
-			<zipfileset dir="launch" includes="run.*" prefix="${release.version}" />
-			<zipfileset dir="launch" includes="run_xl.*" prefix="${release.version}" />
+			<zipfileset dir="launch" includes="run.*" prefix="${release.version}" filemode="755" />
+			<zipfileset dir="launch" includes="run_xl.*" prefix="${release.version}" filemode="755" />
 			<zipfileset dir="log" includes="*.*" prefix="${release.version}/log" />
 		</zip>
 	</target>
