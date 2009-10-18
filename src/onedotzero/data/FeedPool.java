@@ -154,7 +154,7 @@ public class FeedPool {
     /**
      * Returns a message from a randomly picked registed feed.
      * 
-     * @return
+     * @return message string
      */
     public String getMessage() {
         return getRandomActiveFeed().feed.getMessage();
@@ -163,7 +163,7 @@ public class FeedPool {
     /**
      * Returns a randomly chosen active feed (i.e. its state is not disabled).
      * 
-     * @return
+     * @return feed config
      */
     public FeedConfiguration getRandomActiveFeed() {
         FeedConfiguration f = null;

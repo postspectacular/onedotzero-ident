@@ -232,7 +232,7 @@ public class PoleManager {
      * </ul>
      * 
      * @param currPole
-     * @return
+     * @return pole class type
      */
     public PoleClass classifyPole(ParticlePole3D currPole) {
         PoleClass type = PoleClass.UNKNOWN;
@@ -278,7 +278,7 @@ public class PoleManager {
      * Retrieves the {@link LetterPoleGroup} of the letter currently least used
      * by ribbons.
      * 
-     * @return
+     * @return letter group instance
      */
     public LetterPoleGroup getLeastUsedLetter() {
         LetterPoleGroup lpg = null;
@@ -394,7 +394,7 @@ public class PoleManager {
 
     /**
      * @see #setCentreExclusion(Vec3D)
-     * @param y
+     * @param z
      */
     public void setCentreExclusionZ(float z) {
         centreExclusion.z = z;

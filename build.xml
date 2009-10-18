@@ -16,15 +16,16 @@
     -->
 	<!-- uncomment the above lines to use ANT outside of Eclipse -->
 	<target name="init">
-		<property name="app.name" value="odzinstall" />
+		<property name="app.name" value="odzgen" />
 		<property name="release.version" value="${app.name}-20091017" />
 		<property name="release.mainclass" value="onedotzero.ODZApp" />
+		<property name="src.dir" value="src" />
 		<property name="release.dir" value="dist" />
 		<property name="javadoc.dir" value="docs" />
 		<property name="asset.dir" value="assets" />
 		<property name="config.dir" value="config" />
 		<property name="release.jar" value="${app.name}.jar" />
-		<property name="release.zip" value="${release.dir}/${release.version}.zip" />
+		<property name="release.zip" value="${release.dir}/${release.version}-bin.zip" />
 	</target>
 
 	<target name="clean" description="Removes build files &amp; javadocs created this scripts">
@@ -60,7 +61,7 @@
 
 	<target name="javadoc" depends="compile" description="Generate documentation">
 		<mkdir dir="${javadoc.dir}" />
-		<javadoc destdir="${javadoc.dir}" access="protected" use="true" notree="false" nonavbar="false" noindex="false" splitindex="true" author="true" version="false" nodeprecatedlist="false" nodeprecated="false" sourcepath="src" doctitle="${app.name} v${release.version}">
+		<javadoc destdir="${javadoc.dir}" access="protected" use="true" notree="false" nonavbar="false" noindex="false" splitindex="true" author="true" version="false" nodeprecatedlist="false" nodeprecated="false" sourcepath="${src.dir}" doctitle="onedotzero 2009 identity generator v${release.version}">
 			<classpath>
 				<pathelement location="lib/toxiclibscore.jar" />
 				<pathelement location="lib/colorutils.jar" />
@@ -71,15 +72,17 @@
 				<pathelement location="lib/opengl/jogl.jar" />
 				<pathelement location="lib/opengl/opengl.jar" />
 			</classpath>
-			<packageset dir="src" defaultexcludes="yes" />
+			<packageset dir="${src.dir}" defaultexcludes="yes" />
 		</javadoc>
 	</target>
 
 	<target name="release" depends="compile,javadoc" description="Packages binary and source builds">
+		<!-- binary release -->
 		<zip destfile="${release.zip}">
 			<zipfileset dir="${release.dir}" includes="${release.jar}" prefix="${release.version}" />
 			<zipfileset dir="lib/opengl" includes="*.dll" prefix="${release.version}" />
 			<zipfileset dir="lib/opengl" includes="*.jnilib" prefix="${release.version}" />
+			<zipfileset dir="lib/opengl" includes="*.so" prefix="${release.version}" />
 			<zipfileset dir="${asset.dir}" includes="*.*" prefix="${release.version}/assets" />
 			<zipfileset dir="${asset.dir}/alphabet" includes="*.*" prefix="${release.version}/assets/alphabet" />
 			<zipfileset dir="${asset.dir}/feeds" includes="*.*" prefix="${release.version}/assets/feeds" />
@@ -89,7 +92,6 @@
 			<zipfileset dir="launch" includes="run_xl.*" prefix="${release.version}" />
 			<zipfileset dir="log" includes="*.*" prefix="${release.version}/log" />
 		</zip>
-		<copy file="${release.zip}" tofile="${release.dir}/${app.name}-latest.zip" />
 	</target>
 
 </project>

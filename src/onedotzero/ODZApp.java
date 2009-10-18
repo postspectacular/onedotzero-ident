@@ -397,7 +397,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns the camera configuration.
      * 
-     * @return
+     * @return cam config
      */
     public CameraConfig getCamera() {
         return camera;
@@ -406,7 +406,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns the main app configuration.
      * 
-     * @return
+     * @return app config
      */
     public TypedProperties getConfig() {
         return config;
@@ -415,7 +415,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns a reference to the ControlP5 GUI instance.
      * 
-     * @return
+     * @return main gui
      */
     public ControlP5 getGUI() {
         return ui;
@@ -424,7 +424,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns time stamp of the last {@link AppState} change.
      * 
-     * @return
+     * @return timestamp
      */
     public long getLastAppStateChange() {
         return lastAppStateChange;
@@ -433,7 +433,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns time stamp of the last message scheduled.
      * 
-     * @return
+     * @return timestamp
      */
     public long getLastMessageTime() {
         return lastMessageTime;
@@ -442,7 +442,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns list of expired, but still visible ribbons.
      * 
-     * @return
+     * @return list of ribbons
      */
     public List<Ribbon> getOldRibbons() {
         return oldRibbons;
@@ -451,7 +451,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns list of active ribbons.
      * 
-     * @return
+     * @return list of ribbons
      */
     public List<Ribbon> getRibbons() {
         return ribbons;
@@ -460,7 +460,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns the {@link MessageScheduler} instance.
      * 
-     * @return
+     * @return scheduler
      */
     public MessageScheduler getScheduler() {
         return messageScheduler;
@@ -469,7 +469,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Returns the tiled exporter instance for high res images.
      * 
-     * @return
+     * @return tiler
      */
     public Tiler getTiler() {
         return tiler;
@@ -586,17 +586,17 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 UI_Y + 80, 100, 14).setLabel("max ribbon count");
         ui.addSlider("setRibbonHitCount", 1, 150, PoleManager.MAX_HITCOUNT,
                 UI_X, UI_Y + 100, 100, 14).setLabel("max letter hitcount");
-        ui.addSlider("setRibbonLoopCount", 0, 4, Ribbon.LOOP_COUNT, UI_X + 200,
-                UI_Y + 100, 100, 14).setLabel("letter loop count");
+        ui.addSlider("setRibbonLoopCount", 0, 4, Ribbon.LOOP_COUNT, UI_X,
+                UI_Y + 120, 100, 14).setLabel("letter loop count");
 
         ui.addSlider("setPoleHitCount", 1, 300, PoleManager.C1_MAX_HITCOUNT,
-                UI_X, UI_Y + 120, 100, 14).setLabel("max pole hitcount");
+                UI_X, UI_Y + 140, 100, 14).setLabel("max pole hitcount");
 
         ui.addToggle("isDebug", isDebug, UI_X, height - UI_Y - 80, 14, 14)
                 .setLabel("debug mode");
 
-        ui.addBang("resetPolesAndRibbons", UI_X, height - UI_Y - 28, 28, 28)
-                .setLabel("clear all");
+        ui.addBang("initPolesAndRibbonsForMessage", UI_X, height - UI_Y - 28,
+                28, 28).setLabel("clear all");
 
         ui.addBang("initRibbons", UI_X + 100, height - UI_Y - 28, 28, 28)
                 .setLabel("clear ribbons");
@@ -668,11 +668,6 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                         camera.panSmooth, UI_X + 400, UI_Y + 120, 200, 14);
         s.setLabel("smooth");
         s.setTab(UI_CAMERA);
-
-        // s = ui.addSlider("setCamFOV", 30, 120, degrees(camera.fov), UI_X,
-        // UI_Y + 200, 100, 14);
-        // s.setLabel("field of view");
-        // s.setTab(UI_CAMERA);
 
         Radio r = ui.addRadio("camPresetID", UI_X, UI_Y + 200);
         for (int i = 1; i <= 9; i++) {
@@ -1153,10 +1148,6 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         TypedProperties camConfig = (doUseSMS ? smsConfig : config);
     }
 
-    private void setCamFOV(float fov) {
-        camera.fov = radians(fov);
-    }
-
     private void setCamPanSmooth(float s) {
         camera.panSmooth = s;
     }
@@ -1235,11 +1226,6 @@ public class ODZApp extends PApplet implements InteractionStateListener,
 
     private void setRibbonLoopCount(int c) {
         Ribbon.LOOP_COUNT = c;
-    }
-
-    private void setRibbonWidth(float w) {
-        ribbonWidth = w;
-        Ribbon.configureWidth(ribbonWidth, letterScale);
     }
 
     /*
@@ -1328,7 +1314,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         tiler = new Tiler(pgl, numExportTiles);
         doShowMask = config.getBoolean("app.mask.enabled", false);
         if (doShowMask) {
-            maskImg = loadImage("assets/mask_1280x128.png");
+            maskImg = loadImage("assets/textures/mask_1280x128.png");
         }
         initSMS();
         initGUI();

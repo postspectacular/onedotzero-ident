@@ -114,7 +114,7 @@ public class Texture {
      * Generates a new OpenGL texture ID.
      * 
      * @param gl
-     * @return
+     * @return texture id
      */
     protected int generateTextureID(GL gl) {
         final int[] tmp = new int[1];

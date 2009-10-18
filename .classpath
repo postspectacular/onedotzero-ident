@@ -9,7 +9,11 @@
 	<classpathentry kind="lib" path="lib/oscp5.jar"/>
 	<classpathentry kind="lib" path="lib/toxiclibscore.jar"/>
 	<classpathentry kind="lib" path="lib/opengl/gluegen-rt.jar"/>
-	<classpathentry kind="lib" path="lib/opengl/jogl.jar"/>
+	<classpathentry kind="lib" path="lib/opengl/jogl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="onedotzero-ident/lib/opengl"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="lib/opengl/opengl.jar"/>
 	<classpathentry kind="src" path="src.tools"/>
 	<classpathentry kind="output" path="bin"/>
