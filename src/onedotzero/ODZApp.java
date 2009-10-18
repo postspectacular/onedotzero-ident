@@ -344,8 +344,17 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             textAlign(LEFT);
         }
         if (isShiftDown) {
-            showArcBallCue();
+            drawArcBallCue();
         }
+    }
+
+    /**
+     * Displays the boundary of the active arc ball navigation.
+     */
+    private void drawArcBallCue() {
+        noFill();
+        stroke(255);
+        ellipse(width / 2, height / 2, arcBall.radius * 2, arcBall.radius * 2);
     }
 
     /**
@@ -822,14 +831,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
      */
     private void initPolesAndRibbonsForMessage(UserMessage msg) {
         logger.info("reset poles for new message");
-        float leading = config.getFloat("message.leading", 160);
-        float totalHeight = msg.getContent().size() * leading;
-        // if (doUseAutoExclusion) {
-        // poles.setCentreExclusionZ((totalHeight / 2)
-        // / worldBounds.getExtent().z);
-        // } else {
         poles.setCentreExclusionZ(centreExclusion.z);
-        // }
         poles.init(numPoles);
         if (customPoles != null) {
             poles.addExternalPoles(customPoles.points);
@@ -1071,11 +1073,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
     }
 
-    private void resetCamSpeedX() {
+    public void resetCamSpeedX() {
         camera.targetRotSpeed.x = 0;
     }
 
-    private void resetCamSpeedY() {
+    public void resetCamSpeedY() {
         camera.targetRotSpeed.y = 0;
     }
 
@@ -1102,13 +1104,13 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         saveCamera(camPresetID);
     }
 
-    private void saveTiles() {
+    public void saveTiles() {
         tiler.initTiles(camera.fov, camera.near, camera.far);
         tiler.save(sketchPath("export"), "odz-xl-"
                 + (System.currentTimeMillis() / 1000), "tga");
     }
 
-    private void scheduleMessage(String message) {
+    public void scheduleMessage(String message) {
         userMessageProvider.addMessage(message);
         int maxLines = config.getInt("message.maxlines", 5);
         float leading = config.getFloat("message.leading", 160);
@@ -1148,41 +1150,31 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         TypedProperties camConfig = (doUseSMS ? smsConfig : config);
     }
 
-    private void setCamPanSmooth(float s) {
+    public void setCamPanSmooth(float s) {
         camera.panSmooth = s;
     }
 
-    private void setCamRotSmooth(float s) {
+    public void setCamRotSmooth(float s) {
         camera.rotSmooth = s;
     }
 
-    private void setCamRotSpeedX(float s) {
+    public void setCamRotSpeedX(float s) {
         camera.targetRotSpeed.x = s;
     }
 
-    private void setCamRotSpeedY(float s) {
+    public void setCamRotSpeedY(float s) {
         camera.targetRotSpeed.y = s;
     }
 
-    private void setCamTargetZoom(float z) {
+    public void setCamTargetZoom(float z) {
         camera.targetZoom = z;
     }
 
-    private void setCamZoomSmooth(float s) {
+    public void setCamZoomSmooth(float s) {
         camera.zoomSmooth = s;
     }
 
-    private void setCentreExclusionY(float y) {
-        centreExclusion.y = y;
-        poles.setCentreExclusionY(y);
-    }
-
-    private void setCentreExclusionZ(float z) {
-        centreExclusion.z = z;
-        poles.setCentreExclusionZ(z);
-    }
-
-    private void setExportFormat(int id) {
+    public void setExportFormat(int id) {
         exporter.setFileFormat(FrameSequenceExporter.FORMATS[id]);
         System.out.println("new export format: " + exporter.getFileFormat());
     }
@@ -1201,7 +1193,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
     }
 
-    private void setNumExportTiles(int num) {
+    public void setNumExportTiles(int num) {
         numExportTiles = num;
         tiler = new Tiler(pgl, numExportTiles);
         int totalWidth = num * width;
@@ -1212,19 +1204,19 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 + " x " + py + " mm @ 300 dpi)");
     }
 
-    private void setPoleHitCount(int count) {
+    public void setPoleHitCount(int count) {
         PoleManager.C1_MAX_HITCOUNT = count;
     }
 
-    private void setRibbonColorSaturation(float amount) {
+    public void setRibbonColorSaturation(float amount) {
         feedPool.adjustFeedColors(amount);
     }
 
-    private void setRibbonHitCount(int count) {
+    public void setRibbonHitCount(int count) {
         PoleManager.MAX_HITCOUNT = count;
     }
 
-    private void setRibbonLoopCount(int c) {
+    public void setRibbonLoopCount(int c) {
         Ribbon.LOOP_COUNT = c;
     }
 
@@ -1251,15 +1243,15 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
     }
 
-    private void setTargetPanX(float x) {
+    public void setTargetPanX(float x) {
         camera.targetPos.x = x;
     }
 
-    private void setTargetPanY(float y) {
+    public void setTargetPanY(float y) {
         camera.targetPos.y = y;
     }
 
-    private void setTargetPanZ(float z) {
+    public void setTargetPanZ(float z) {
         camera.targetPos.z = z;
     }
 
@@ -1344,15 +1336,6 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     @Override
     public void setZoom(float zoom) {
         camera.targetZoom = map(zoom, 0, 1, 0.5f, 5);
-    }
-
-    /**
-     * Displays the boundary of the active arc ball navigation.
-     */
-    private void showArcBallCue() {
-        noFill();
-        stroke(255);
-        ellipse(width / 2, height / 2, arcBall.radius * 2, arcBall.radius * 2);
     }
 
     public void stop__() {
