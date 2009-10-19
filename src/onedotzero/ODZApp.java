@@ -108,7 +108,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private static final long serialVersionUID = -1L;
 
     private static final String APP_NAME = "ODZIdent";
-    private static final String APP_VERSION = "20091016";
+    private static final String APP_VERSION = "20091019";
 
     public static final AppState IDLE_STATE = new IdleState();
     public static final AppState MENU_STATE = new MenuState();
@@ -170,7 +170,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private PFont font;
 
     private ControlP5 ui;
-    private CameraConfig camera;
+    private CameraState camera;
     private ArcBall arcBall;
     private AABB worldBounds = new AABB(new Vec3D(), new Vec3D(1500, 400, 500));
 
@@ -209,7 +209,6 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private boolean doUseSMS = false;
     private boolean doUpdate = true;
 
-    private Textlabel uiLabelRibbons;
     private Textlabel uiLabelNumTiles;
 
     private Vec3D centreExclusion;
@@ -273,38 +272,43 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             background(bgColor.toARGB());
             translate(width * 0.5f, height * 0.5f, 0);
             arcBall.apply();
-            camera.update(this);
+            if (!tiler.isTiling()) {
+                camera.update(this);
+            }
+            camera.apply(this);
             tiler.pre();
             gl.glDepthMask(false);
             gl.glEnable(GL.GL_BLEND);
             gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE);
             gl.glTexParameterf(GL.GL_TEXTURE_2D,
                     GL.GL_TEXTURE_MAX_ANISOTROPY_EXT, 4f);
-            shakeEnergy *= shakeEnergyDecay;
-            appState.update(this);
-            if (doUpdate) {
-                if (ribbons.size() < maxRibbonCount) {
-                    for (int i = 0; i < numNewRibbons
-                            && ribbons.size() < maxRibbonCount; i++) {
-                        if (random(1f) < newRibbonChance) {
-                            addRibbon();
+            if (!tiler.isTiling()) {
+                shakeEnergy *= shakeEnergyDecay;
+                appState.update(this);
+                if (doUpdate) {
+                    if (ribbons.size() < maxRibbonCount) {
+                        for (int i = 0; i < numNewRibbons
+                                && ribbons.size() < maxRibbonCount; i++) {
+                            if (random(1f) < newRibbonChance) {
+                                addRibbon();
+                            }
                         }
                     }
                 }
-            }
-            float displaceDecay = (appState != SHAKE_STATE ? 0.9f : 0.99f);
-            for (Iterator<Ribbon> i = oldRibbons.iterator(); i.hasNext();) {
-                Ribbon r = i.next();
-                if (!r.update(sequenceID, doUpdate, displaceDecay)) {
-                    r.cleanup();
-                    i.remove();
+                float displaceDecay = (appState != SHAKE_STATE ? 0.9f : 0.99f);
+                for (Iterator<Ribbon> i = oldRibbons.iterator(); i.hasNext();) {
+                    Ribbon r = i.next();
+                    if (!r.update(sequenceID, doUpdate, displaceDecay)) {
+                        r.cleanup();
+                        i.remove();
+                    }
                 }
-            }
-            for (Iterator<Ribbon> i = ribbons.iterator(); i.hasNext();) {
-                Ribbon r = i.next();
-                if (!r.update(sequenceID, doUpdate, displaceDecay)) {
-                    r.cleanup();
-                    i.remove();
+                for (Iterator<Ribbon> i = ribbons.iterator(); i.hasNext();) {
+                    Ribbon r = i.next();
+                    if (!r.update(sequenceID, doUpdate, displaceDecay)) {
+                        r.cleanup();
+                        i.remove();
+                    }
                 }
             }
             pgl.beginGL();
@@ -347,6 +351,8 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         if (isShiftDown) {
             drawArcBallCue();
         }
+        // don't show GUI if in installation mode
+        ui.setAutoDraw(appState == IDENT_STATE);
     }
 
     /**
@@ -411,7 +417,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
      * 
      * @return cam config
      */
-    public CameraConfig getCamera() {
+    public CameraState getCamera() {
         return camera;
     }
 
@@ -507,11 +513,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
      * Initializes camera configuration & arc ball navigation using default
      * settings from app.properties
      * 
-     * @see CameraConfig
+     * @see CameraState
      */
     private void initCamera() {
         arcBall = new ArcBall(this);
-        camera = new CameraConfig();
+        camera = new CameraState();
         camera.flipCamera(!config.getBoolean("app.mode.identity", false));
         camera.pos.set(config.getFloat("cam.pos.x", 0), config.getFloat(
                 "cam.pos.y", 0), config.getFloat("cam.pos.z", 0));
@@ -595,18 +601,17 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         ui.addSlider("maxScrollSpeed", 0.001f, 0.02f, maxScrollSpeed, UI_X,
                 UI_Y + 100, 100, 14).setLabel("text scroll speed");
 
-        ui.addToggle("isDebug", isDebug, UI_X, height - UI_Y - 80, 14, 14)
-                .setLabel("debug mode");
+        ui.addToggle("isDebug", isDebug, UI_X, height - UI_Y - 184, 28, 28)
+                .setLabel("toggle debug mode");
 
-        ui.addBang("initPolesAndRibbonsForMessage", UI_X, height - UI_Y - 28,
-                28, 28).setLabel("clear all");
+        ui.addToggle("doUpdate", doUpdate, UI_X, height - UI_Y - 132, 28, 28)
+                .setLabel("toggle ribbon animation");
 
-        ui.addBang("initRibbons", UI_X + 100, height - UI_Y - 28, 28, 28)
-                .setLabel("clear ribbons");
+        ui.addBang("triggerDefaultMessage", UI_X, height - UI_Y - 80, 28, 28)
+                .setLabel("clear all");
 
-        uiLabelRibbons =
-                ui.addTextlabel("uiLabelRibbons", "", UI_X, UI_Y + 200);
-        uiLabelRibbons.setVisible(false);
+        ui.addBang("initRibbons", UI_X, height - UI_Y - 28, 28, 28).setLabel(
+                "clear ribbons");
 
         // ////////////////////////// camera
 
@@ -689,7 +694,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
 
         int y = UI_Y;
         int feedID = 0;
-        for (FeedConfiguration f : feedPool.getFeedList()) {
+        for (FeedConfiguration f : feedPool) {
             Toggle t = ui.addToggle("toggleFeed", f.isEnabled, UI_X, y, 14, 14);
             t.setId(feedID);
             t.setLabel(f.id);
@@ -697,7 +702,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
 
                 @Override
                 public void controlEvent(ControlEvent e) {
-                    feedPool.toggleFeedStatus(e.controller().id());
+                    int num = feedPool.getActiveFeedCount();
+                    int id = e.controller().id();
+                    if (!feedPool.getFeedForID(id).isEnabled || num > 1) {
+                        feedPool.toggleFeedStatus(id);
+                    }
                 }
             });
             t.setTab(UI_FEEDS);
@@ -720,7 +729,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         r.setTab(UI_EXPORT);
 
         s =
-                ui.addSlider("setNumExportTiles", 1, 20, numExportTiles,
+                ui.addSlider("setNumExportTiles", 1, 10, numExportTiles,
                         UI_X + 100, UI_Y, 100, 14);
         s.setLabel("num tiles");
         s.setTab(UI_EXPORT);
@@ -739,8 +748,10 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     /**
      * Loads & initializes all registered message feeds. Starts up the message
      * scheduler.
+     * 
+     * @param isIdentity
      */
-    private void initMessages() {
+    private void initMessages(boolean isIdentity) {
         feedPool = new FeedPool();
         int numFeeds = config.getInt("feeds.count", 1);
         for (int i = 0; i < numFeeds; i++) {
@@ -772,8 +783,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
         userMessageProvider =
                 new UserMessageProvider(config.getInt("message.log.count", 10));
-        String userCol = config.getProperty("message.feed.col", "ffff00");
-        feedPool.addFeed("user", TColor.newHex(userCol), userMessageProvider);
+        if (!isIdentity) {
+            String userCol = config.getProperty("message.feed.col", "ffff00");
+            feedPool.addFeed("user", TColor.newHex(userCol),
+                    userMessageProvider);
+        }
         messageFormatter =
                 new WordWrapFormatter(config.getInt("message.wordwrap", 12));
         messageScheduler =
@@ -788,9 +802,9 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private void initOSC() {
         TypedProperties conf = new TypedProperties();
         conf.load("config/osc.properties");
-        osc =
-                new OSCManager(conf.getProperty("osc.ip", "239.0.0.1"), conf
-                        .getInt("osc.port", 7777));
+        String ip = conf.getProperty("osc.ip", "239.0.0.1");
+        int port = conf.getInt("osc.port", 7777);
+        osc = new OSCManager(ip, port);
         osc.addListener(this);
     }
 
@@ -1297,9 +1311,10 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         gl = pgl.gl;
         font = loadFont(sketchPath("assets/fonts/odzroman-64.vlw"));
         textFont(font, 18);
+        boolean isIdentity = config.getBoolean("app.mode.identity", false);
         initCamera();
         initDefaults();
-        initMessages();
+        initMessages(isIdentity);
         initAlphabet();
         initPoleManager();
         initTextures();
@@ -1314,9 +1329,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
         initSMS();
         initGUI();
-        setAppState(config.getBoolean("app.mode.identity", false)
-                ? IDENT_STATE
-                : IDLE_STATE);
+        setAppState(isIdentity ? IDENT_STATE : IDLE_STATE);
         if (appState != IDENT_STATE) {
             initOSC();
         }

@@ -19,7 +19,7 @@
 
 package onedotzero.states;
 
-import onedotzero.CameraConfig;
+import onedotzero.CameraState;
 import onedotzero.ODZApp;
 import toxi.util.datatypes.TypedProperties;
 
@@ -32,7 +32,7 @@ public class IdentState extends AppState {
     @Override
     public void enter(ODZApp app, TypedProperties camConfig) {
         app.getScheduler().enableProcessQueue(true);
-        CameraConfig camera = app.getCamera();
+        CameraState camera = app.getCamera();
         camera.enableModulation(false);
     }
 

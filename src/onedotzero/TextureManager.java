@@ -24,6 +24,7 @@ import java.util.HashMap;
 import javax.media.opengl.GL;
 import javax.media.opengl.glu.GLU;
 
+import processing.core.PApplet;
 import processing.core.PConstants;
 import processing.core.PFont;
 import processing.core.PGraphics;
@@ -45,12 +46,12 @@ public class TextureManager {
     protected HashMap<String, Texture> textures =
             new HashMap<String, Texture>();
 
-    protected ODZApp app;
+    protected PApplet app;
     protected PFont font;
     protected GL gl;
     protected static GLU glu = new GLU();
 
-    public TextureManager(ODZApp app, GL gl, PFont font, int texWidth) {
+    public TextureManager(PApplet app, GL gl, PFont font, int texWidth) {
         this.app = app;
         this.gl = gl;
         this.font = font;

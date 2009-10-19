@@ -21,6 +21,7 @@ package onedotzero.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.logging.Logger;
 
 import onedotzero.ODZApp;
@@ -34,7 +35,7 @@ import toxi.math.MathUtils;
  * {@link ParticlePole3D} constellations of user submitted message for ribbons
  * to flow through.
  */
-public class FeedPool {
+public class FeedPool implements Iterable<FeedPool.FeedConfiguration> {
 
     /**
      * Container type for a single feed configuration, incl. color & enable
@@ -143,12 +144,20 @@ public class FeedPool {
     }
 
     /**
-     * Returns a list of all registered feeds.
-     * 
-     * @return the feedList
+     * @return number of currenly active/enabled feeds
      */
-    public ArrayList<FeedConfiguration> getFeedList() {
-        return feedList;
+    public int getActiveFeedCount() {
+        int count = 0;
+        for (FeedConfiguration fc : feedList) {
+            if (fc.isEnabled) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public FeedConfiguration getFeedForID(int id) {
+        return feedList.get(id);
     }
 
     /**
@@ -171,6 +180,16 @@ public class FeedPool {
             f = feedList.get(MathUtils.random(feedList.size()));
         }
         return f;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Iterable#iterator()
+     */
+    @Override
+    public Iterator<FeedConfiguration> iterator() {
+        return feedList.iterator();
     }
 
     /**

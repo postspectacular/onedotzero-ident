@@ -46,7 +46,7 @@ public class OSCManager {
 
     public OSCManager(String ip, int port) {
         osc = new OscP5(this, ip, port);
-        logger.info("new osc: " + ip + ":" + port);
+        logger.info("starting OSCManager: " + ip + ":" + port);
     }
 
     public void addListener(InteractionStateListener l) {
@@ -62,9 +62,9 @@ public class OSCManager {
     }
 
     void oscEvent(OscMessage m) {
-        if (logger.isLoggable(Level.INFO)) {
-            logger.info("received from: " + m.netAddress());
-            logger.info("addrpattern: " + m.addrPattern() + " type: "
+        if (logger.isLoggable(Level.FINE)) {
+            logger.fine("received from: " + m.netAddress());
+            logger.fine("addrpattern: " + m.addrPattern() + " type: "
                     + m.typetag());
         }
         if (m.checkAddrPattern("/menufinished")

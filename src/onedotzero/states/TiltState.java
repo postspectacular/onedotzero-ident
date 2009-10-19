@@ -19,7 +19,7 @@
 
 package onedotzero.states;
 
-import onedotzero.CameraConfig;
+import onedotzero.CameraState;
 import onedotzero.ODZApp;
 import toxi.geom.Vec3D;
 import toxi.util.datatypes.TypedProperties;
@@ -31,8 +31,8 @@ public class TiltState extends AppState {
 
     @Override
     public void enter(ODZApp app, TypedProperties camConfig) {
-        app.getScheduler().enableProcessQueue(true);
-        CameraConfig camera = app.getCamera();
+        app.getScheduler().enableProcessQueue(false);
+        CameraState camera = app.getCamera();
         camera.targetPos.clear();
         camera.enableModulation(false);
     }

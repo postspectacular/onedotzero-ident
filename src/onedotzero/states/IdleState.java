@@ -19,7 +19,7 @@
 
 package onedotzero.states;
 
-import onedotzero.CameraConfig;
+import onedotzero.CameraState;
 import onedotzero.ODZApp;
 import toxi.util.datatypes.TypedProperties;
 
@@ -31,15 +31,15 @@ public class IdleState extends AppState {
 
     @Override
     public void enter(ODZApp app, TypedProperties camConfig) {
-        app.getScheduler().enableProcessQueue(false);
-        CameraConfig camera = app.getCamera();
+        app.getScheduler().enableProcessQueue(true);
+        CameraState camera = app.getCamera();
         camera.enableModulation(true);
         camera.targetPos.clear();
         camera.maxModAmpX = camConfig.getFloat("cam.modulation.x.amp", 0.1f);
         camera.maxModAmpY = camConfig.getFloat("cam.modulation.y.amp", 0.1f);
         camera.targetZoom =
                 camConfig.getFloat("defaults.state.idle.zoom", 0.75f);
-        camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
+        camera.targetTiltOrient.set(CameraState.CAM_ORIENTATION_IDLE);
         app.setUpdate(true);
     }
 

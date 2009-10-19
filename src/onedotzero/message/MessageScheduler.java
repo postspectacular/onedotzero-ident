@@ -136,7 +136,7 @@ public class MessageScheduler extends Thread {
         UserMessage prev = currentMessage;
         currentMessage = queue.poll();
         if (currentMessage != null) {
-            logger.info("new message triggered" + currentMessage);
+            logger.info("new message triggered: " + currentMessage);
             currentMessage.activate();
             for (MessageScheduleListener l : listeners) {
                 l.messageScheduled(currentMessage);

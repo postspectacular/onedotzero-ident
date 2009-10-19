@@ -57,7 +57,7 @@ as permitted under the GPL:
 * http://toxiclibs.org (LGPL: toxiclibscore, datautils, colorutils)
 * http://sojamo.de/libraries/oscP5/ (LGPL)
 * http://sojamo.de/libraries/controlP5/ (LGPL)
-* https://jogl.dev.java.net (???)
+* https://jogl.dev.java.net (BSD)
 
 ------------------------------------------------------------------
 Usage:

@@ -19,7 +19,7 @@
 
 package onedotzero.states;
 
-import onedotzero.CameraConfig;
+import onedotzero.CameraState;
 import onedotzero.ODZApp;
 import toxi.util.datatypes.TypedProperties;
 
@@ -32,12 +32,12 @@ public class MenuState extends AppState {
     @Override
     public void enter(ODZApp app, TypedProperties camConfig) {
         app.getScheduler().enableProcessQueue(true);
-        CameraConfig camera = app.getCamera();
+        CameraState camera = app.getCamera();
         camera.enableModulation(true);
         camera.targetPos.clear();
         camera.targetZoom =
                 camConfig.getFloat("defaults.state.menu.zoom", 0.75f);
-        camera.targetTiltOrient.set(CameraConfig.CAM_ORIENTATION_IDLE);
+        camera.targetTiltOrient.set(CameraState.CAM_ORIENTATION_IDLE);
         app.setUpdate(true);
     }
 
