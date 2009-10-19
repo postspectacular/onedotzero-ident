@@ -112,9 +112,6 @@ public class MessageScheduler extends Thread {
                         triggerNextMessage();
                     }
                     UserMessage nxt = queue.peek();
-                    if (nxt != null) {
-                        logger.info("next msg: " + nxt.getPriority());
-                    }
                     if (nxt != null && currentMessage != null
                             && nxt.getPriority() > currentMessage.getPriority()) {
                         triggerNextMessage();
@@ -135,7 +132,7 @@ public class MessageScheduler extends Thread {
         isActive = false;
     }
 
-    private synchronized void triggerNextMessage() {
+    private void triggerNextMessage() {
         UserMessage prev = currentMessage;
         currentMessage = queue.poll();
         if (currentMessage != null) {

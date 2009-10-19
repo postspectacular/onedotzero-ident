@@ -120,6 +120,26 @@ public class ParticlePole3D extends Vec3D {
     }
 
     /**
+     * Just overriding this for good style. Does the same as...
+     * 
+     * @see toxi.geom.Vec3D#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object arg0) {
+        return super.equals(arg0);
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see toxi.geom.Vec3D#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode() * 37 + (int) charge;
+    }
+
+    /**
      * Increases this pole's hit count and updates time stamp of last hit.
      */
     public void updateHitCount() {

@@ -43,9 +43,6 @@ import toxi.math.waves.SineWave;
  */
 public class Ribbon {
 
-    public static int LOOP_COUNT = 0;
-    public static int MAX_FLOW_DEPTH = 16;
-
     protected static float RIBBON_STEP_LENGTH = 10;
     protected static float TEXTURE_WIDTH = 4096;
     protected static float RIBBON_WIDTH;
@@ -62,30 +59,31 @@ public class Ribbon {
         SCALED_LETTER_WIDTH = SCALED_WIDTH / LETTER_WIDTH;
     }
 
-    public HashMap<ParticlePole3D, ParticlePole3D> poles =
+    protected HashMap<ParticlePole3D, ParticlePole3D> poles =
             new HashMap<ParticlePole3D, ParticlePole3D>();
 
-    public ArrayList<Vec3D> vertices = new ArrayList<Vec3D>();
-    public float[] distances;
-    private final PoleManager poleManager;
+    protected ArrayList<Vec3D> vertices = new ArrayList<Vec3D>();
+    protected float[] distances;
 
-    private double currU = -1;
-    private double uSpeed;
-    private int letterStartID, letterEndID;
+    protected final PoleManager poleManager;
 
-    private Texture tex;
+    protected double currU = -1;
+    protected double uSpeed;
+    protected int letterStartID, letterEndID;
 
-    private int totalLength;
-    private FeedConfiguration feed;
+    protected Texture tex;
 
-    private int startFrame, delay;
-    private SineWave displaceMod;
-    private Vec3D shakeDir = new Vec3D();
-    private Vec3D displaceOffset = new Vec3D();
-    private Vec3D tmp = new Vec3D();
-    private double uTargetSpeed;
+    protected int totalLength;
+    protected FeedConfiguration feed;
 
-    private Vec3D origPos;
+    protected int startFrame, delay;
+    protected SineWave displaceMod;
+    protected Vec3D shakeDir = new Vec3D();
+    protected Vec3D displaceOffset = new Vec3D();
+    protected Vec3D tmp = new Vec3D();
+    protected double uTargetSpeed;
+
+    protected Vec3D origPos;
 
     public Ribbon(PoleManager poles, Texture tex, FeedConfiguration feed,
             float maxScroll, int maxDelay) {
@@ -130,10 +128,11 @@ public class Ribbon {
     }
 
     public boolean create(List<ParticlePole3D> poleSet, Vec3D dir,
-            int startFrame) {
+            int startFrame, int loopCount) {
         this.startFrame = startFrame;
         List<ParticlePole3D> availablePoles =
-                PoleManager.getFiltered(poleSet, PoleManager.MAX_HITCOUNT);
+                PoleManager.getFiltered(poleSet, poleManager
+                        .getMaxLetterHitCount());
         ParticlePole3D currPole = PoleManager.getOldestPole(availablePoles);
         ParticlePole3D currPoleAlt =
                 PoleManager.getLeastUsedPole(availablePoles);
@@ -151,12 +150,12 @@ public class Ribbon {
             ParticlePole3D startPole = currPole;
             origPos = startPole;
             List<ParticlePole3D> c1filtered =
-                    PoleManager.getFiltered(poleManager.c1poles,
-                            PoleManager.C1_MAX_HITCOUNT);
+                    PoleManager.getFiltered(poleManager.c1poles, poleManager
+                            .getMaxExternalPoleHitcount());
             ParticlePole3D extPole =
                     currPole.computeFieldLine(c1filtered, dir,
-                            RIBBON_STEP_LENGTH, poleManager.bounds,
-                            PoleManager.C1_MAX_HITCOUNT);
+                            RIBBON_STEP_LENGTH, poleManager.bounds, poleManager
+                                    .getMaxExternalPoleHitcount());
             if (extPole != null) {
                 extPole.updateHitCount();
                 poles.put(extPole, extPole);
@@ -206,7 +205,7 @@ public class Ribbon {
                         }
                     }
                     letterEndID = vertices.size();
-                    for (int k = 0; k < LOOP_COUNT; k++) {
+                    for (int k = 0; k < loopCount; k++) {
                         for (int i = letterStartID; i < letterEndID; i++) {
                             vertices.add(vertices.get(i));
                         }
@@ -217,7 +216,7 @@ public class Ribbon {
                     ParticlePole3D endPole =
                             currPole.computeFieldLine(c1filtered, dir,
                                     RIBBON_STEP_LENGTH, poleManager.bounds,
-                                    PoleManager.C1_MAX_HITCOUNT);
+                                    poleManager.getMaxExternalPoleHitcount());
                     if (endPole != null) {
                         endPole.updateHitCount();
                         vertices.addAll(currPole.vertices);

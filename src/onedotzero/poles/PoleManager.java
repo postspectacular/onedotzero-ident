@@ -45,8 +45,6 @@ public class PoleManager {
     }
 
     public static final float MAX_CHARGE = 20;
-    public static int MAX_HITCOUNT = 30;
-    public static int C1_MAX_HITCOUNT = 60;
 
     /**
      * Returns a new filtered list of poles with a hitcount less than the given
@@ -170,6 +168,8 @@ public class PoleManager {
 
     protected final Vec3D centreExclusion;
     private PolePositionStrategy positionStrategy;
+    private int maxLetterHitCount;
+    private int maxExternalPoleHitcount;
 
     public PoleManager(Alphabet alphabet, AABB bounds) {
         this.alphabet = alphabet;
@@ -251,7 +251,7 @@ public class PoleManager {
     /**
      * Clears all pole sets.
      */
-    private void clear() {
+    public void clear() {
         c1poles.clear();
         c12poles.clear();
         c13poles.clear();
@@ -284,7 +284,7 @@ public class PoleManager {
         LetterPoleGroup lpg = null;
         float minUsage = Float.MAX_VALUE;
         for (LetterPoleGroup g : messagePoles.values()) {
-            float usage = g.computeTotalUsage(MAX_HITCOUNT);
+            float usage = g.computeTotalUsage(maxLetterHitCount);
             if (usage < minUsage) {
                 lpg = g;
                 if (usage == 0) {
@@ -304,6 +304,20 @@ public class PoleManager {
      */
     public LetterPoleGroup getLetterForPole(ParticlePole3D pole) {
         return messagePoles.get(pole);
+    }
+
+    /**
+     * @return the maxExternalPoleHitcount
+     */
+    public int getMaxExternalPoleHitcount() {
+        return maxExternalPoleHitcount;
+    }
+
+    /**
+     * @return the maxLetterHitCount
+     */
+    public int getMaxLetterHitCount() {
+        return maxLetterHitCount;
     }
 
     /**
@@ -400,6 +414,14 @@ public class PoleManager {
         centreExclusion.z = z;
     }
 
+    public void setMaxExternalPoleHitcount(int hc) {
+        maxExternalPoleHitcount = hc;
+    }
+
+    public void setMaxLetterHitcount(int hc) {
+        maxLetterHitCount = hc;
+    }
+
     /**
      * Sets the new positioning strategy used for C1 (external) poles.
      * 
@@ -416,7 +438,7 @@ public class PoleManager {
      */
     public void showLetterUsage() {
         for (LetterPoleGroup g : messagePoles.values()) {
-            g.computeTotalUsage(MAX_HITCOUNT);
+            g.computeTotalUsage(maxLetterHitCount);
             System.out.println(g);
         }
     }

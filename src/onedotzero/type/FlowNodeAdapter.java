@@ -31,11 +31,11 @@ public class FlowNodeAdapter extends XmlAdapter<String, int[]> {
 
     @Override
     public String marshal(int[] options) throws Exception {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < options.length; i++) {
-            s += i + (i < options.length - 1 ? "," : "");
+            s.append(i).append(i < options.length - 1 ? "," : "");
         }
-        return s;
+        return s.toString();
     }
 
     @Override

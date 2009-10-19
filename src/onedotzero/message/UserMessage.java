@@ -35,11 +35,15 @@ public class UserMessage implements Comparable<UserMessage> {
     private long birthTime;
     private int ttl;
     private int priority;
+    private int hash;
 
     public UserMessage(List<MessageLine> lines, int ttl, int priority) {
         this.lines = lines;
         this.ttl = ttl;
         this.priority = priority;
+        for (MessageLine l : lines) {
+            this.hash = 37 * this.hash + l.hashCode();
+        }
     }
 
     public void activate() {
@@ -57,12 +61,35 @@ public class UserMessage implements Comparable<UserMessage> {
         return m.priority - priority;
     }
 
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof UserMessage) {
+            return priority == ((UserMessage) obj).priority;
+        }
+        return false;
+    }
+
     public List<MessageLine> getContent() {
         return lines;
     }
 
     public int getPriority() {
         return priority;
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return hash;
     }
 
     public boolean isActive() {
@@ -81,10 +108,10 @@ public class UserMessage implements Comparable<UserMessage> {
 
     @Override
     public String toString() {
-        String result = "";
+        StringBuilder result = new StringBuilder(64);
         for (MessageLine l : lines) {
-            result += l.text + " ";
+            result.append(l.text).append(" ");
         }
-        return result;
+        return result.toString();
     }
 }

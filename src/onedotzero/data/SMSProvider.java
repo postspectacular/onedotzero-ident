@@ -47,7 +47,6 @@ public class SMSProvider extends Thread {
 
     private TypedProperties config;
     private boolean isActive = true;
-    private AtomFeed feed;
 
     private Set<String> messageIndex;
 

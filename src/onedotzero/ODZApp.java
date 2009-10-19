@@ -68,6 +68,7 @@ import processing.core.PImage;
 import processing.opengl.PGraphicsOpenGL;
 import toxi.color.TColor;
 import toxi.geom.AABB;
+import toxi.geom.Quaternion;
 import toxi.geom.Vec3D;
 import toxi.math.MathUtils;
 import toxi.math.conversion.UnitTranslator;
@@ -226,9 +227,9 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private float shakeMaxEnergy = 1200;
     private float shakeEnergyDecay = 0.95f;
 
-    private Slider uiExclusionSlider;
-
     private PImage maskImg;
+
+    private int ribbonLoopCount;
 
     /**
      * Initializes and adds a new single text ribbon in the space. The ribbon is
@@ -245,7 +246,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         FeedConfiguration fc = feedPool.getRandomActiveFeed();
         Texture tex = textureManager.getTextureFor(fc.feed.getMessage());
         Ribbon r = new Ribbon(poles, tex, fc, maxScrollSpeed, maxRibbonDelay);
-        if (r.create(poleSet, Vec3D.Y_AXIS, sequenceID)) {
+        if (r.create(poleSet, Vec3D.Y_AXIS, sequenceID, ribbonLoopCount)) {
             ribbons.add(r);
         }
     }
@@ -270,7 +271,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             sequenceID++;
             camera.perspective(this);
             background(bgColor.toARGB());
-            translate(width / 2, height / 2, 0);
+            translate(width * 0.5f, height * 0.5f, 0);
             arcBall.apply();
             camera.update(this);
             tiler.pre();
@@ -354,7 +355,8 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private void drawArcBallCue() {
         noFill();
         stroke(255);
-        ellipse(width / 2, height / 2, arcBall.radius * 2, arcBall.radius * 2);
+        ellipse(width * 0.5f, height * 0.5f, arcBall.radius * 2,
+                arcBall.radius * 2);
     }
 
     /**
@@ -385,17 +387,18 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         hint(DISABLE_DEPTH_TEST);
         gl.glBlendFunc(GL.GL_SRC_ALPHA, GL.GL_ONE_MINUS_SRC_ALPHA);
         imageMode(CENTER);
-        image(maskImg, width / 2, maskImg.height / 2, width, maskImg.height);
+        image(maskImg, width * 0.5f, maskImg.height * 0.5f, width,
+                maskImg.height);
         pushMatrix();
         {
-            translate(maskImg.height / 2, height / 2);
+            translate(maskImg.height * 0.5f, height * 0.5f);
             rotate(-HALF_PI);
             image(maskImg, 0, 0);
         }
         popMatrix();
         pushMatrix();
         {
-            translate(width - maskImg.height / 2, height / 2);
+            translate(width - maskImg.height * 0.5f, height * 0.5f);
             rotate(HALF_PI);
             image(maskImg, 0, 0);
         }
@@ -535,18 +538,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 new Vec3D(0, config.getFloat("defaults.poles.exclusion.depth",
                         0.33f), config.getFloat(
                         "defaults.poles.exclusion.height", 0.5f));
-        PoleManager.MAX_HITCOUNT =
-                config.getInt("defaults.poles.letters.maxhitcount",
-                        PoleManager.MAX_HITCOUNT);
-        PoleManager.C1_MAX_HITCOUNT =
-                config.getInt("defaults.poles.external.maxhitcount",
-                        PoleManager.C1_MAX_HITCOUNT);
         maxRibbonCount =
                 config.getInt("defaults.ribbon.totalmaxcount", maxRibbonCount);
         maxRibbonDelay =
                 config.getInt("defaults.ribbon.spawndelay", maxRibbonDelay);
-        Ribbon.LOOP_COUNT =
-                config.getInt("defaults.ribbon.loopcount", Ribbon.LOOP_COUNT);
+        ribbonLoopCount = config.getInt("defaults.ribbon.loopcount", 2);
         ribbonWidth = config.getFloat("defaults.ribbon.width", ribbonWidth);
         letterScale =
                 config.getFloat("defaults.ribbon.letter.scale", letterScale);
@@ -574,9 +570,9 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         String UI_CAMERA = "camera";
 
         ui = new ControlP5(this);
-        ui.setColorActive(0xc00099cc);
-        ui.setColorBackground(0x08ffffff);
-        ui.setColorForeground(0xc0003355);
+        ui.setColorActive(0xe00099cc);
+        ui.setColorBackground(0x20ffffff);
+        ui.setColorForeground(0xe0003355);
         ui.setColorLabel(0xffffffff);
         ui.setColorValue(0xffffffff);
         ui.setAutoInitialization(false);
@@ -587,19 +583,17 @@ public class ODZApp extends PApplet implements InteractionStateListener,
 
         ui.addSlider("numPoles", 1, 20, numPoles, UI_X, UI_Y, 100, 14)
                 .setLabel("Number of poles");
-
-        ui.addSlider("maxScrollSpeed", 0.001f, 0.02f, maxScrollSpeed, UI_X,
-                UI_Y + 60, 100, 14).setLabel("text scroll speed");
-
+        ui.addSlider("setPoleHitCount", 1, 300,
+                poles.getMaxExternalPoleHitcount(), UI_X, UI_Y + 20, 100, 14)
+                .setLabel("max pole hitcount");
         ui.addSlider("maxRibbonCount", 0, 1000, maxRibbonCount, UI_X,
-                UI_Y + 80, 100, 14).setLabel("max ribbon count");
-        ui.addSlider("setRibbonHitCount", 1, 150, PoleManager.MAX_HITCOUNT,
-                UI_X, UI_Y + 100, 100, 14).setLabel("max letter hitcount");
-        ui.addSlider("setRibbonLoopCount", 0, 4, Ribbon.LOOP_COUNT, UI_X,
-                UI_Y + 120, 100, 14).setLabel("letter loop count");
-
-        ui.addSlider("setPoleHitCount", 1, 300, PoleManager.C1_MAX_HITCOUNT,
-                UI_X, UI_Y + 140, 100, 14).setLabel("max pole hitcount");
+                UI_Y + 40, 100, 14).setLabel("max ribbon count");
+        ui.addSlider("setRibbonHitCount", 1, 150, poles.getMaxLetterHitCount(),
+                UI_X, UI_Y + 60, 100, 14).setLabel("max letter hitcount");
+        ui.addSlider("ribbonLoopCount", 0, 4, ribbonLoopCount, UI_X, UI_Y + 80,
+                100, 14).setLabel("letter loop count");
+        ui.addSlider("maxScrollSpeed", 0.001f, 0.02f, maxScrollSpeed, UI_X,
+                UI_Y + 100, 100, 14).setLabel("text scroll speed");
 
         ui.addToggle("isDebug", isDebug, UI_X, height - UI_Y - 80, 14, 14)
                 .setLabel("debug mode");
@@ -617,7 +611,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         // ////////////////////////// camera
 
         Slider s =
-                ui.addSlider("setCamTargetZoom", 0.1f, 6, camera.targetZoom,
+                ui.addSlider("setCamTargetZoom", 0.5f, 7, camera.targetZoom,
                         UI_X, UI_Y, 200, 14);
         s.setLabel("Zoom");
         s.setTab(UI_CAMERA);
@@ -755,9 +749,9 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             String type = config.getProperty(feedID + ".type");
             String url = config.getProperty(feedID + ".url");
             String hexCol = config.getProperty(feedID + ".col");
+            FeedConfiguration fc = null;
             if (id != null && type != null && url != null && hexCol != null) {
                 TColor col = TColor.newHex(hexCol);
-                FeedConfiguration fc = null;
                 if (url.indexOf("http://") == -1) {
                     File f = new File(sketchPath(url));
                     URI u = f.toURI();
@@ -768,6 +762,8 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 } else if (type.equalsIgnoreCase("rss")) {
                     fc = feedPool.addRSSFeed(id, url, col);
                 }
+            }
+            if (fc != null) {
                 fc.isEnabled = config.getBoolean(feedID + ".enabled", true);
             } else {
                 logger.warning("feed #" + i
@@ -798,6 +794,15 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         osc.addListener(this);
     }
 
+    private void initPoleManager() {
+        poles = new PoleManager(alphabet, worldBounds);
+        poles.setPositionStrategy(new RandomXPolePositioning());
+        poles.setMaxLetterHitcount(config.getInt(
+                "defaults.poles.letters.maxhitcount", 30));
+        poles.setMaxExternalPoleHitcount(config.getInt(
+                "defaults.poles.external.maxhitcount", 60));
+    }
+
     /**
      * (Re)Initializes the pole manager and loads optional, hardcoded custom
      * poles.
@@ -815,8 +820,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 e.printStackTrace();
             }
         }
-        poles = new PoleManager(alphabet, worldBounds);
-        poles.setPositionStrategy(new RandomXPolePositioning());
+        poles.clear();
         poles.setCentreExclusion(centreExclusion);
         initRibbons();
     }
@@ -852,8 +856,8 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         }
         synchronized (oldRibbons) {
             or.addAll(oldRibbons);
-            oldRibbons = or;
         }
+        oldRibbons = or;
     }
 
     /**
@@ -930,18 +934,23 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             if (exporter.isExporting()) {
                 exporter.stop();
             } else {
-                exporter.newSession().start();
+                if (exporter.newSession()) {
+                    exporter.start();
+                } else {
+                    logger
+                            .severe("could not create folder for new export session");
+                }
             }
-        } else if (key == 'c') {
+        } else if (key == 'c' || key == 'C') {
             triggerDefaultMessage();
-        } else if (key == 'r') {
+        } else if (key == 'r' || key == 'R') {
             initRibbons();
-        } else if (key == 'p') {
+        } else if (key == 'p' || key == 'P') {
             initPoles();
             triggerDefaultMessage();
-        } else if (key == 'u') {
+        } else if (key == 'u' || key == 'U') {
             doUpdate = !doUpdate;
-        } else if (key == 't') {
+        } else if (key == 't' || key == 'T') {
             saveTiles();
         } else if (key >= '1' && key <= '9') {
             if (isControlDown) {
@@ -949,7 +958,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
             } else {
                 loadCameraPreset(key - '0');
             }
-        } else if (key == 'd') {
+        } else if (key == 'd' || key == 'D') {
             isDebug = !isDebug;
         }
     }
@@ -1035,13 +1044,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     @Override
     public void messageScheduled(UserMessage msg) {
         logger.info("setting new message");
-        if (newMessage != null) {
-            synchronized (newMessage) {
-                newMessage = msg;
-            }
-        } else {
-            newMessage = msg;
-        }
+        newMessage = msg;
     }
 
     @Override
@@ -1083,8 +1086,12 @@ public class ODZApp extends PApplet implements InteractionStateListener,
 
     public void saveCamera(int id) {
         TypedProperties conf = new TypedProperties();
-        conf.setProperty("arcball.q_down", arcBall.downOrientation.toString());
-        conf.setProperty("arcball.q_drag", arcBall.dragOrientation.toString());
+        Quaternion q = arcBall.downOrientation;
+        conf.setProperty("arcball.q_down", q.w + "," + q.x + "," + q.y + ","
+                + q.z);
+        q = arcBall.dragOrientation;
+        conf.setProperty("arcball.q_drag", q.w + "," + q.x + "," + q.y + ","
+                + q.z);
         conf.setProperty("cam.zoom", "" + camera.zoom);
         conf.setProperty("cam.pan", "" + camera.pos.x + "," + camera.pos.y
                 + "," + camera.pos.z);
@@ -1148,6 +1155,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         lastAppStateChange = System.currentTimeMillis();
         isTouching = false;
         TypedProperties camConfig = (doUseSMS ? smsConfig : config);
+        appState.enter(this, camConfig);
     }
 
     public void setCamPanSmooth(float s) {
@@ -1205,7 +1213,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     }
 
     public void setPoleHitCount(int count) {
-        PoleManager.C1_MAX_HITCOUNT = count;
+        poles.setMaxExternalPoleHitcount(count);
     }
 
     public void setRibbonColorSaturation(float amount) {
@@ -1213,11 +1221,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     }
 
     public void setRibbonHitCount(int count) {
-        PoleManager.MAX_HITCOUNT = count;
-    }
-
-    public void setRibbonLoopCount(int c) {
-        Ribbon.LOOP_COUNT = c;
+        poles.setMaxLetterHitcount(count);
     }
 
     /*
@@ -1297,9 +1301,9 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         initDefaults();
         initMessages();
         initAlphabet();
+        initPoleManager();
         initTextures();
         initPoles();
-        triggerDefaultMessage();
         exporter =
                 new FrameSequenceExporter(sketchPath("export"), APP_NAME,
                         config.getProperty("defaults.export.format", "tga"));
@@ -1316,6 +1320,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         if (appState != IDENT_STATE) {
             initOSC();
         }
+        triggerDefaultMessage();
     }
 
     /**
@@ -1396,8 +1401,11 @@ public class ODZApp extends PApplet implements InteractionStateListener,
                 offset.z += subtitleLeading * subtitleScale;
             }
         }
-        messageScheduler.setDefaultMessage(new UserMessage(lines, config
-                .getInt("defaults.message.ttl", 10000), 0));
+        // in ident state don't expire message (practically)
+        int ttl =
+                appState == IDENT_STATE ? (int) 1e+9 : config.getInt(
+                        "defaults.message.ttl", 10000);
+        messageScheduler.setDefaultMessage(new UserMessage(lines, ttl, 0));
     }
 
     /**

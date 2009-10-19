@@ -19,12 +19,16 @@
 
 package onedotzero.poles;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
 /**
  * Compares poles based on their {@link ParticlePole3D#lastHit} time stamp.
  */
-public class RecentHitPoleComparator implements Comparator<ParticlePole3D> {
+public class RecentHitPoleComparator implements Comparator<ParticlePole3D>,
+        Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     /*
      * (non-Javadoc)
@@ -41,5 +45,4 @@ public class RecentHitPoleComparator implements Comparator<ParticlePole3D> {
             return 0;
         }
     }
-
 }

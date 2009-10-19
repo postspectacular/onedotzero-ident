@@ -19,6 +19,7 @@
 
 package onedotzero.text;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -30,7 +31,9 @@ import toxi.math.MathUtils;
  * Implementation of the {@link MessageFormatter} interface, formats a user
  * submitted message by word-wrapping it based on a given line width.
  */
-public class WordWrapFormatter implements MessageFormatter {
+public class WordWrapFormatter implements MessageFormatter, Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private Pattern wrapPattern;
     private int maxLen;

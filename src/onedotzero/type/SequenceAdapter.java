@@ -31,11 +31,11 @@ public class SequenceAdapter extends XmlAdapter<String, int[]> {
 
     @Override
     public String marshal(int[] sequence) throws Exception {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (int i = 0; i < sequence.length; i++) {
-            s += i + (i < sequence.length - 1 ? "," : "");
+            s.append(i).append(i < sequence.length - 1 ? "," : "");
         }
-        return s;
+        return s.toString();
     }
 
     @Override

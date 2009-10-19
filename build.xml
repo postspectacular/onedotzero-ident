@@ -17,7 +17,7 @@
 	<!-- uncomment the above lines to use ANT outside of Eclipse -->
 	<target name="init">
 		<property name="app.name" value="odzgen" />
-		<property name="release.version" value="${app.name}-20091017" />
+		<property name="release.version" value="${app.name}-20091019" />
 		<property name="release.mainclass" value="onedotzero.ODZApp" />
 		<property name="src.dir" value="src" />
 		<property name="release.dir" value="dist" />

@@ -181,11 +181,13 @@ public class LetterFlowEditor extends PApplet {
     }
 
     private void exportFlowInfo() {
-        String flow = "<!-- " + (isOutline ? "out" : "in") + "line -->\n";
+        StringBuilder flow = new StringBuilder(256);
+        flow.append("<!-- " + (isOutline ? "out" : "in") + "line -->\n");
         for (Pole p : currPath) {
-            flow += "<node>" + p.flow[0] + "," + p.flow[1] + "</node>\n";
+            flow.append("<node>").append(p.flow[0]).append(",").append(
+                    p.flow[1]).append("</node>\n");
         }
-        println(flow);
+        println(flow.toString());
     }
 
     @Override

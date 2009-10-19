@@ -40,7 +40,7 @@ public class FeedPool {
      * Container type for a single feed configuration, incl. color & enable
      * state.
      */
-    public class FeedConfiguration {
+    public static class FeedConfiguration {
 
         public final String id;
         public boolean isEnabled;

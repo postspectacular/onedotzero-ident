@@ -49,11 +49,11 @@ public class Path {
 
     @Override
     public String toString() {
-        String s = "";
+        StringBuilder s = new StringBuilder();
         for (int i : sequenceIndex) {
             Vec2D p = points.get(i);
-            s += p.toString() + " ";
+            s.append(p.toString()).append(" ");
         }
-        return s;
+        return s.toString();
     }
 }
