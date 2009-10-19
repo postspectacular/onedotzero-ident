@@ -1,1 +1,1 @@
-java -Xms480m -Xmx512m -Djava.library.path=. -Djava.util.logging.config.file=config/logging.properties -jar odzgen.jar
+java -Xms256m -Xmx640m -Djava.library.path=bin -Djava.util.logging.config.file=config/logging.properties -jar odzgen.jar

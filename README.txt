@@ -14,6 +14,7 @@ Copyright 2009 Karsten Schmidt (PostSpectacular Ltd.).
 Contact:
 ------------------------------------------------------------------
 
+http://onedotzero.com/
 http://postspectacular.com/
 http://wk.com/
 
@@ -60,6 +61,23 @@ as permitted under the GPL:
 * https://jogl.dev.java.net (BSD)
 
 ------------------------------------------------------------------
+Application launch
+------------------------------------------------------------------
+Windows:
+
+Double click on "run.bat"
+
+OSX/Linux:
+
+Note that for OSX you can download the software as either a standard
+Mac application or the cross-platform release which does NOT contain
+any specific OSX binaries.
+
+For the crossplatform release launch by either double clicking
+"run.sh" or ppen Terminal, switch into the application folder...
+Then type "./run.sh" (without quotes)
+
+------------------------------------------------------------------
 Usage:
 ------------------------------------------------------------------
 
@@ -101,3 +119,4 @@ misc
 ------------------------------------------------------------------
 
 u - toggle update of the simulation/animation (i.e. use for free frames)
+Escape - quit application

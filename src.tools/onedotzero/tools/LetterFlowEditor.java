@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import processing.core.PApplet;
 import processing.core.PImage;
+import toxi.color.ReadonlyTColor;
 import toxi.color.TColor;
 import toxi.geom.Vec2D;
 
@@ -47,7 +48,7 @@ public class LetterFlowEditor extends PApplet {
         }
 
         void draw() {
-            TColor c = id == selectedID ? TColor.YELLOW : col;
+            ReadonlyTColor c = id == selectedID ? TColor.YELLOW : col;
             stroke(c.toARGB());
             beginShape(LINES);
             if (flow[0] != -1 && (id == selectedID || flow[0] > id)) {

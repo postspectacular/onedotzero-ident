@@ -50,12 +50,6 @@
 			<fatjar.jarsource file="lib/colorutils.jar" relpath="" />
 			<fatjar.jarsource file="lib/datautils.jar" relpath="" />
 			<fatjar.jarsource file="lib/controlp5.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/activation.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/jaxb-api.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/jaxb-impl.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/jaxb-xjc.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/jaxb1-impl.jar" relpath="" />
-			<fatjar.jarsource file="lib/jaxb/jsr173_1.0_api.jar" relpath="" />
 		</fatjar.build>
 	</target>
 
@@ -80,17 +74,18 @@
 		<!-- binary release -->
 		<zip destfile="${release.zip}" whenempty="create">
 			<zipfileset dir="${release.dir}" includes="${release.jar}" prefix="${release.version}" />
-			<zipfileset dir="lib/opengl" includes="*.dll" prefix="${release.version}" />
-			<zipfileset dir="lib/opengl" includes="*.jnilib" prefix="${release.version}" />
-			<zipfileset dir="lib/opengl" includes="*.so" prefix="${release.version}" />
+			<zipfileset dir="lib/opengl" includes="*.dll" prefix="${release.version}/bin" />
+			<zipfileset dir="lib/opengl" includes="*.jnilib" prefix="${release.version}/bin" />
+			<zipfileset dir="lib/opengl" includes="*.so" prefix="${release.version}/bin" />
 			<zipfileset dir="${asset.dir}" includes="*.*" prefix="${release.version}/assets" />
 			<zipfileset dir="${asset.dir}/alphabet" includes="*.*" prefix="${release.version}/assets/alphabet" />
 			<zipfileset dir="${asset.dir}/feeds" includes="*.*" prefix="${release.version}/assets/feeds" />
 			<zipfileset dir="${asset.dir}/fonts" includes="*.*" prefix="${release.version}/assets/fonts" />
+			<zipfileset dir="${asset.dir}/icon" includes="*.*" prefix="${release.version}/assets/icon" />
+			<zipfileset dir="${asset.dir}/textures" includes="*.*" prefix="${release.version}/assets/textures" />
 			<zipfileset dir="${config.dir}" includes="*.*" prefix="${release.version}/config" />
 			<zipfileset dir="launch" includes="run.*" prefix="${release.version}" filemode="755" />
-			<zipfileset dir="launch" includes="run_xl.*" prefix="${release.version}" filemode="755" />
-			<zipfileset dir="log" includes="*.*" prefix="${release.version}/log" />
+			<zipfileset dir="." includes="*.txt" prefix="${release.version}" />
 		</zip>
 	</target>
 

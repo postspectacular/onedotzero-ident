@@ -31,7 +31,7 @@ import toxi.math.waves.SineWave;
  * manipulation/modulation and interpolation of parameters of the perspective
  * view. Tied to {@link ODZApp} and GUI.
  */
-public class CameraConfig {
+public class CameraState {
 
     public static final Quaternion CAM_ORIENTATION_IDLE =
             new Quaternion(0, -0.1242f, -0.3897f, -0.9126f).normalize();
@@ -63,9 +63,21 @@ public class CameraConfig {
     public float maxModAmpX = 0.1f;
     public float maxModAmpY = 0.1f;
 
-    public CameraConfig() {
+    public CameraState() {
         camModX = new SineWave(0, 0.01f, 0.1f, 0);
         camModY = new SineWave(0, 0.0137f, 0.1f, 0);
+    }
+
+    public void apply(PApplet app) {
+        float[] axis = tiltOrientation.toAxisAngle();
+        app.rotate(axis[0], axis[1], axis[2], axis[3]);
+        if (isFlipped) {
+            app.rotateZ(MathUtils.PI);
+        }
+        app.rotateY(rotation.y + camModY.value);
+        app.rotateX(rotation.x + camModX.value);
+        app.scale(zoom);
+        app.translate(pos.x, pos.y, pos.z);
     }
 
     public void enableModulation(boolean state) {
@@ -97,11 +109,6 @@ public class CameraConfig {
             targetZoom = zoomMod.update();
         }
         zoom += (targetZoom - zoom) * zoomSmooth;
-        float[] axis = tiltOrientation.toAxisAngle();
-        app.rotate(axis[0], axis[1], axis[2], axis[3]);
-        if (isFlipped) {
-            app.rotateZ(MathUtils.PI);
-        }
         if (isCamModEnabled) {
             camModX.amp += (maxModAmpX - camModX.amp) * 0.25;
             camModY.amp += (maxModAmpY - camModY.amp) * 0.25;
@@ -109,9 +116,7 @@ public class CameraConfig {
             camModX.amp *= 0.9;
             camModY.amp *= 0.9;
         }
-        app.rotateY(camModY.update());
-        app.rotateX(camModX.update());
-        app.scale(zoom);
-        app.translate(pos.x, pos.y, pos.z);
+        camModX.update();
+        camModY.update();
     }
 }
