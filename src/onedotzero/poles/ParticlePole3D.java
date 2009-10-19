@@ -38,7 +38,7 @@ public class ParticlePole3D extends Vec3D {
     public static final float RADIUS = 10;
     public static final float EVENT_HORIZON = (RADIUS * 0.9f) * (RADIUS * 0.9f);
 
-    public List<Vec3D> vertices = new ArrayList<Vec3D>();
+    public final List<Vec3D> vertices = new ArrayList<Vec3D>();
 
     public final Vec2D pos2D;
 

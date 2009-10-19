@@ -8,8 +8,10 @@ syntax: glob
 *.zip
 *.db
 
+ODZGen.app
 bin
 export
 dist
 docs
+metrics
 log
