@@ -52,6 +52,11 @@ public class RSSMessageProvider implements MessageProvider {
                 MathUtils.random(feed.channel.items.size())).getTitlePlain();
     }
 
+    @Override
+    public String getName() {
+        return feed.channel.title;
+    }
+
     /*
      * (non-Javadoc)
      * 

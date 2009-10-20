@@ -108,7 +108,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
     private static final long serialVersionUID = -1L;
 
     private static final String APP_NAME = "ODZIdent";
-    private static final String APP_VERSION = "20091019";
+    private static final String APP_VERSION = "20091020";
 
     public static final AppState IDLE_STATE = new IdleState();
     public static final AppState MENU_STATE = new MenuState();
@@ -697,7 +697,7 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         for (FeedConfiguration f : feedPool) {
             Toggle t = ui.addToggle("toggleFeed", f.isEnabled, UI_X, y, 14, 14);
             t.setId(feedID);
-            t.setLabel(f.id);
+            t.setLabel(f.feed.getName());
             t.addListener(new ControlListener() {
 
                 @Override
@@ -756,10 +756,13 @@ public class ODZApp extends PApplet implements InteractionStateListener,
         int numFeeds = config.getInt("feeds.count", 1);
         for (int i = 0; i < numFeeds; i++) {
             String feedID = "feed" + i;
-            String id = config.getProperty(feedID + ".id");
-            String type = config.getProperty(feedID + ".type");
-            String url = config.getProperty(feedID + ".url");
-            String hexCol = config.getProperty(feedID + ".col");
+            String id = config.getProperty(feedID + ".id", "feed" + i);
+            String type = config.getProperty(feedID + ".type", "atom");
+            String url =
+                    config
+                            .getProperty(feedID + ".url",
+                                    "http://search.twitter.com/search.atom?q=onedotzero");
+            String hexCol = config.getProperty(feedID + ".col", "ffffff");
             FeedConfiguration fc = null;
             if (id != null && type != null && url != null && hexCol != null) {
                 TColor col = TColor.newHex(hexCol);

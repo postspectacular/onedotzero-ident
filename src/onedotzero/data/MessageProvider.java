@@ -36,6 +36,14 @@ public interface MessageProvider {
     public String getMessage();
 
     /**
+     * Returns the name of the provider instance (e.g. the title of an Atom
+     * feed). Used to label feeds in the GUI.
+     * 
+     * @return name string
+     */
+    public String getName();
+
+    /**
      * Initializes the data feed.
      * 
      * @return true, if successful.

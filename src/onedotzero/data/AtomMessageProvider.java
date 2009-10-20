@@ -53,6 +53,11 @@ public class AtomMessageProvider implements MessageProvider {
                 .random(feed.entries.size())).title);
     }
 
+    @Override
+    public String getName() {
+        return feed.title;
+    }
+
     /*
      * (non-Javadoc)
      * 

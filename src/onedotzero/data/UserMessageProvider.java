@@ -39,6 +39,8 @@ import toxi.math.MathUtils;
 @XmlRootElement(name = "messages")
 public class UserMessageProvider implements MessageProvider {
 
+    private static final String NAME = "N900 messages";
+
     protected static final Logger logger =
             Logger.getLogger(UserMessageProvider.class.getName());
 
@@ -79,6 +81,11 @@ public class UserMessageProvider implements MessageProvider {
             msg = "@onedotzero you guys rock!";
         }
         return msg;
+    }
+
+    @Override
+    public String getName() {
+        return NAME;
     }
 
     /*
