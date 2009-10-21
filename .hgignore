@@ -11,8 +11,12 @@ syntax: glob
 
 ODZGen.app
 bin
-export
 dist
 docs
 metrics
 log
+
+syntax: regexp
+
+^export/.*$
+
